@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from JPK_app.views import SprzedazView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^sprzedaz/$', SprzedazView.as_view(), name='sprzedaz'),
 ]
