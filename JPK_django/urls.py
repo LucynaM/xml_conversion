@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from JPK_app.views import SprzedazView
+from JPK_app.views import ConvertToDBView, ExportToExcel
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^sprzedaz/$', SprzedazView.as_view(), name='sprzedaz'),
+    url(r'^conversion_db/$', ConvertToDBView.as_view(), name='conversion_db'),
+    url(r'^export/$', ExportToExcel.as_view(), name="export"),
 ]

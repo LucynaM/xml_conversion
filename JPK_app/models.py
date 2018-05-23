@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 # Create your models here.
 class SprzedazWiersz(models.Model):
     LpSprzedazy = models.IntegerField()
@@ -39,4 +41,21 @@ class SprzedazWiersz(models.Model):
     K_37 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     K_38 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     K_39 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+
+class ZakupWiersz(models.Model):
+    LpZakupu = models.IntegerField()
+    NrDostawcy = models.CharField(max_length=30, default='brak')
+    NazwaDostawcy = models.CharField(max_length=240)
+    AdresDostawcy = models.CharField(max_length=240)
+    DowodZakupu = models.CharField(max_length=240)
+    DataZakupu = models.DateField()
+    DataWplywu = models.DateField(null=True)
+    K_43 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_44 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_45 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_46 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_47 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_48 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_49 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    K_50 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
 
