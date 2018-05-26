@@ -1,0 +1,1509 @@
+<tns:JPK xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/">
+  <tns:Naglowek xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/">
+    <tns:KodFormularza wersjaSchemy="1-0" kodSystemowy="JPK_VAT (2)">JPK_VAT</tns:KodFormularza>
+    <tns:WariantFormularza>2</tns:WariantFormularza>
+    <tns:CelZlozenia>1</tns:CelZlozenia>
+    <tns:DataWytworzeniaJPK>2017-10-15T19:18:45.020</tns:DataWytworzeniaJPK>
+    <tns:DataOd>2017-08-01</tns:DataOd>
+    <tns:DataDo>2017-08-31</tns:DataDo>
+    <tns:DomyslnyKodWaluty>PLN</tns:DomyslnyKodWaluty>
+    <tns:KodUrzedu>0000</tns:KodUrzedu>
+  </tns:Naglowek>
+  <tns:Podmiot1 xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/">
+    <tns:IdentyfikatorPodmiotu xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/">
+      <etd:NIP>0000000000</etd:NIP>
+      <etd:PelnaNazwa>Nazwa podmiotu</etd:PelnaNazwa>
+      <etd:REGON>000000000</etd:REGON>
+    </tns:IdentyfikatorPodmiotu>
+    <tns:AdresPodmiotu xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/">
+      <tns:KodKraju>PL</tns:KodKraju>
+      <tns:Wojewodztwo>województwo</tns:Wojewodztwo>
+      <tns:Powiat>Powiat</tns:Powiat>
+      <tns:Gmina>Gmina</tns:Gmina>
+      <tns:Ulica>Ulica</tns:Ulica>
+      <tns:NrDomu>00</tns:NrDomu>
+      <tns:Miejscowosc>Miejscowość</tns:Miejscowosc>
+      <tns:KodPocztowy>00-000</tns:KodPocztowy>
+      <tns:Poczta>Miejscowość</tns:Poczta>
+    </tns:AdresPodmiotu>
+  </tns:Podmiot1>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>1</tns:LpSprzedazy>
+    <tns:NrKontrahenta>100-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 100</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000000/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-02</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-02</tns:DataSprzedazy>
+    <tns:K_19>10267.60</tns:K_19>
+    <tns:K_20>2361.55</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>2</tns:LpSprzedazy>
+    <tns:NrKontrahenta>200-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 200</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>0000/00/2017/FVN</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-03</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-03</tns:DataSprzedazy>
+    <tns:K_34>5424.30</tns:K_34>
+    <tns:K_35>1247.59</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>3</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0721</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-04</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-04</tns:DataSprzedazy>
+    <tns:K_34>300.00</tns:K_34>
+    <tns:K_35>69.00</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>4</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0721</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-04</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-04</tns:DataSprzedazy>
+    <tns:K_34>11307.90</tns:K_34>
+    <tns:K_35>2600.82</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>5</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0719</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-04</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-04</tns:DataSprzedazy>
+    <tns:K_34>157.00</tns:K_34>
+    <tns:K_35>36.11</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>6</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0719</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-04</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-04</tns:DataSprzedazy>
+    <tns:K_34>6463.80</tns:K_34>
+    <tns:K_35>1486.67</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>7</tns:LpSprzedazy>
+    <tns:NrKontrahenta>400-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 400</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000001/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-04</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-04</tns:DataSprzedazy>
+    <tns:K_19>118.00</tns:K_19>
+    <tns:K_20>27.14</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>8</tns:LpSprzedazy>
+    <tns:NrKontrahenta>100-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 100</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000002/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-07</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-07</tns:DataSprzedazy>
+    <tns:K_19>37031.89</tns:K_19>
+    <tns:K_20>8517.33</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>9</tns:LpSprzedazy>
+    <tns:NrKontrahenta>500-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 500</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000003/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-09</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-09</tns:DataSprzedazy>
+    <tns:K_19>2840.00</tns:K_19>
+    <tns:K_20>653.20</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>10</tns:LpSprzedazy>
+    <tns:NrKontrahenta>400-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 400</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000004/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-10</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-10</tns:DataSprzedazy>
+    <tns:K_19>12032.00</tns:K_19>
+    <tns:K_20>2767.36</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>11</tns:LpSprzedazy>
+    <tns:NrKontrahenta>100-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 100</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000005/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-10</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-10</tns:DataSprzedazy>
+    <tns:K_19>38465.35</tns:K_19>
+    <tns:K_20>8847.03</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>12</tns:LpSprzedazy>
+    <tns:NrKontrahenta>100-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 100</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000006/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-11</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-11</tns:DataSprzedazy>
+    <tns:K_19>15197.15</tns:K_19>
+    <tns:K_20>3495.34</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>13</tns:LpSprzedazy>
+    <tns:NrKontrahenta>DE600000000</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma DE</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>CCC/000000/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-11</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-11</tns:DataSprzedazy>
+    <tns:K_21>8640.03</tns:K_21>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>14</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0774</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-17</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-17</tns:DataSprzedazy>
+    <tns:K_34>482.50</tns:K_34>
+    <tns:K_35>110.98</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>15</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0774</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-17</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-17</tns:DataSprzedazy>
+    <tns:K_34>2825.90</tns:K_34>
+    <tns:K_35>649.96</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>16</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0773</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-17</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-17</tns:DataSprzedazy>
+    <tns:K_34>625.00</tns:K_34>
+    <tns:K_35>143.75</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>17</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0773</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-17</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-17</tns:DataSprzedazy>
+    <tns:K_34>4774.00</tns:K_34>
+    <tns:K_35>1098.02</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>18</tns:LpSprzedazy>
+    <tns:NrKontrahenta>100-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 100</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000010/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-17</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-17</tns:DataSprzedazy>
+    <tns:K_19>2342.70</tns:K_19>
+    <tns:K_20>538.82</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>19</tns:LpSprzedazy>
+    <tns:NrKontrahenta>100-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 100</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>F/000011/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-18</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-18</tns:DataSprzedazy>
+    <tns:K_19>7195.30</tns:K_19>
+    <tns:K_20>1654.92</tns:K_20>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>20</tns:LpSprzedazy>
+    <tns:NrKontrahenta>700-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 700</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA-A-AAA-17-06174</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-21</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-21</tns:DataSprzedazy>
+    <tns:K_34>3485.40</tns:K_34>
+    <tns:K_35>801.64</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>21</tns:LpSprzedazy>
+    <tns:NrKontrahenta>300-000-00-00</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0790</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-22</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-22</tns:DataSprzedazy>
+    <tns:K_34>350.00</tns:K_34>
+    <tns:K_35>80.50</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>22</tns:LpSprzedazy>
+    <tns:NrKontrahenta>\d+\d+\d+\d+</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma 300</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>AA/AA/17/0790</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-22</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-22</tns:DataSprzedazy>
+    <tns:K_34>4917.80</tns:K_34>
+    <tns:K_35>1131.09</tns:K_35>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>23</tns:LpSprzedazy>
+    <tns:NrKontrahenta>DE600000000</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma DE</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>CCC/000001/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-29</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-29</tns:DataSprzedazy>
+    <tns:K_21>11269.75</tns:K_21>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpSprzedazy>24</tns:LpSprzedazy>
+    <tns:NrKontrahenta>CH400000000</tns:NrKontrahenta>
+    <tns:NazwaKontrahenta>Firma CH</tns:NazwaKontrahenta>
+    <tns:AdresKontrahenta>Adres</tns:AdresKontrahenta>
+    <tns:DowodSprzedazy>A/000000/17</tns:DowodSprzedazy>
+    <tns:DataWystawienia>2017-08-31</tns:DataWystawienia>
+    <tns:DataSprzedazy>2017-08-31</tns:DataSprzedazy>
+    <tns:K_22>7622.93</tns:K_22>
+  </tns:SprzedazWiersz>
+  <tns:SprzedazCtrl>
+    <tns:LiczbaWierszySprzedazy>24</tns:LiczbaWierszySprzedazy>
+    <tns:PodatekNalezny>38318.82</tns:PodatekNalezny>
+  </tns:SprzedazCtrl>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>1</tns:LpZakupu>
+    <tns:NrDostawcy>8000000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 800</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0000000009</tns:DowodZakupu>
+    <tns:DataZakupu>2017-07-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>481.66</tns:K_45>
+    <tns:K_46>110.78</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>2</tns:LpZakupu>
+    <tns:NrDostawcy>9000000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 900</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AB/0000/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-07-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>116.90</tns:K_45>
+    <tns:K_46>9.35</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>3</tns:LpZakupu>
+    <tns:NrDostawcy>110-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 110</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A09</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-01</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>79.50</tns:K_45>
+    <tns:K_46>18.29</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>4</tns:LpZakupu>
+    <tns:NrDostawcy>120-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 120</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AF/0000/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-01</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>67.66</tns:K_45>
+    <tns:K_46>15.56</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>5</tns:LpZakupu>
+    <tns:NrDostawcy>120-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 120</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0000/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-01</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>26.71</tns:K_45>
+    <tns:K_46>6.14</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>6</tns:LpZakupu>
+    <tns:NrDostawcy>130-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 130</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA1/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-01</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>420.00</tns:K_45>
+    <tns:K_46>96.60</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>7</tns:LpZakupu>
+    <tns:NrDostawcy>140-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 140</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A000/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-01</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-01</tns:DataWplywu>
+    <tns:K_45>121.13</tns:K_45>
+    <tns:K_46>27.86</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>8</tns:LpZakupu>
+    <tns:NrDostawcy>1500000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 150</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AL/00063/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>610.37</tns:K_45>
+    <tns:K_46>140.38</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>9</tns:LpZakupu>
+    <tns:NrDostawcy>8000000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 800</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A800391520</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>50.00</tns:K_45>
+    <tns:K_46>11.50</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>10</tns:LpZakupu>
+    <tns:NrDostawcy>1600000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 160</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A64/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>3000.00</tns:K_45>
+    <tns:K_46>690.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>11</tns:LpZakupu>
+    <tns:NrDostawcy>170-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 170</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AV/83/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>8006.40</tns:K_45>
+    <tns:K_46>1841.47</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>12</tns:LpZakupu>
+    <tns:NrDostawcy>180-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 180</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A2957/K/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>106.20</tns:K_45>
+    <tns:K_46>24.43</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>13</tns:LpZakupu>
+    <tns:NrDostawcy>190-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 190</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AS/2422/2017/STW</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>336.48</tns:K_45>
+    <tns:K_46>77.39</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>14</tns:LpZakupu>
+    <tns:NrDostawcy>210-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 210</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A96/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-02</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-02</tns:DataWplywu>
+    <tns:K_45>369.18</tns:K_45>
+    <tns:K_46>84.91</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>15</tns:LpZakupu>
+    <tns:NrDostawcy>2200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 220</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A8165653</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-03</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-03</tns:DataWplywu>
+    <tns:K_45>2169.60</tns:K_45>
+    <tns:K_46>499.01</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>16</tns:LpZakupu>
+    <tns:NrDostawcy>230-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 230</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AV007056AA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-03</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-03</tns:DataWplywu>
+    <tns:K_45>51.42</tns:K_45>
+    <tns:K_46>11.83</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>17</tns:LpZakupu>
+    <tns:NrDostawcy>200-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 200</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A000/00/2017/FVN</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-03</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-03</tns:DataWplywu>
+    <tns:K_45>5424.30</tns:K_45>
+    <tns:K_46>1247.59</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>18</tns:LpZakupu>
+    <tns:NrDostawcy>240-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 240</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A10865-2017-685</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-03</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-03</tns:DataWplywu>
+    <tns:K_45>68.64</tns:K_45>
+    <tns:K_46>15.78</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>19</tns:LpZakupu>
+    <tns:NrDostawcy>2500000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 250</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A297F03183</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>129.00</tns:K_45>
+    <tns:K_46>29.67</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>20</tns:LpZakupu>
+    <tns:NrDostawcy>2600000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 260</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>Ask/08/05269/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>55.00</tns:K_45>
+    <tns:K_46>12.65</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>21</tns:LpZakupu>
+    <tns:NrDostawcy>190-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 190</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AS/2455/2017/STW</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>1003.72</tns:K_45>
+    <tns:K_46>230.86</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>22</tns:LpZakupu>
+    <tns:NrDostawcy>190-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 190</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AS/2454/2017/STW</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>1061.87</tns:K_45>
+    <tns:K_46>244.23</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>23</tns:LpZakupu>
+    <tns:NrDostawcy>270-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 270</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A775/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>195.12</tns:K_45>
+    <tns:K_46>44.88</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>24</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0718</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>5175.40</tns:K_45>
+    <tns:K_46>1190.34</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>25</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0720</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>2696.00</tns:K_45>
+    <tns:K_46>620.08</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>26</tns:LpZakupu>
+    <tns:NrDostawcy>280-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 280</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AVAT06225/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>315.00</tns:K_45>
+    <tns:K_46>72.45</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>27</tns:LpZakupu>
+    <tns:NrDostawcy>290-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 290</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A442/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>531.14</tns:K_45>
+    <tns:K_46>122.16</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>28</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0719</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>6463.80</tns:K_45>
+    <tns:K_46>1486.67</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>29</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0719</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>157.00</tns:K_45>
+    <tns:K_46>36.11</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>30</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0729</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>11307.90</tns:K_45>
+    <tns:K_46>2600.82</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>31</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0729</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-04</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-04</tns:DataWplywu>
+    <tns:K_45>300.00</tns:K_45>
+    <tns:K_46>69.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>32</tns:LpZakupu>
+    <tns:NrDostawcy>310-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 310</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A1962K2/7386/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-06</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-06</tns:DataWplywu>
+    <tns:K_45>162.63</tns:K_45>
+    <tns:K_46>37.41</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>33</tns:LpZakupu>
+    <tns:NrDostawcy>320-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 320</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A4/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-07</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-07</tns:DataWplywu>
+    <tns:K_45>4471.55</tns:K_45>
+    <tns:K_46>1028.46</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>34</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A9/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-07</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-07</tns:DataWplywu>
+    <tns:K_45>560.00</tns:K_45>
+    <tns:K_46>128.80</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>35</tns:LpZakupu>
+    <tns:NrDostawcy>2200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 220</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A818990</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-08</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-08</tns:DataWplywu>
+    <tns:K_45>1029.47</tns:K_45>
+    <tns:K_46>236.78</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>36</tns:LpZakupu>
+    <tns:NrDostawcy>340-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 340</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A83217/AA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-08</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-08</tns:DataWplywu>
+    <tns:K_45>208.38</tns:K_45>
+    <tns:K_46>47.93</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>37</tns:LpZakupu>
+    <tns:NrDostawcy>350-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 350</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A92714</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-08</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-08</tns:DataWplywu>
+    <tns:K_45>715.14</tns:K_45>
+    <tns:K_46>164.48</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>38</tns:LpZakupu>
+    <tns:NrDostawcy>360-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 360</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AAA/17000310</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-08</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-08</tns:DataWplywu>
+    <tns:K_45>3875.00</tns:K_45>
+    <tns:K_46>891.25</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>39</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A8/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-09</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-09</tns:DataWplywu>
+    <tns:K_45>615.00</tns:K_45>
+    <tns:K_46>141.45</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>40</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-09</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-09</tns:DataWplywu>
+    <tns:K_45>410.00</tns:K_45>
+    <tns:K_46>94.30</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>41</tns:LpZakupu>
+    <tns:NrDostawcy>350-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 350</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A92716</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-09</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-09</tns:DataWplywu>
+    <tns:K_45>715.14</tns:K_45>
+    <tns:K_46>164.48</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>42</tns:LpZakupu>
+    <tns:NrDostawcy>3700000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 370</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A77/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-09</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-09</tns:DataWplywu>
+    <tns:K_45>363.58</tns:K_45>
+    <tns:K_46>83.62</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>43</tns:LpZakupu>
+    <tns:NrDostawcy>130-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 130</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA21/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-09</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-09</tns:DataWplywu>
+    <tns:K_45>800.00</tns:K_45>
+    <tns:K_46>184.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>44</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A7/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-10</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-10</tns:DataWplywu>
+    <tns:K_45>100.00</tns:K_45>
+    <tns:K_46>23.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>45</tns:LpZakupu>
+    <tns:NrDostawcy>230-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 230</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA007337AA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-10</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-10</tns:DataWplywu>
+    <tns:K_45>52.74</tns:K_45>
+    <tns:K_46>12.13</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>46</tns:LpZakupu>
+    <tns:NrDostawcy>3800000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 380</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A26/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-10</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-10</tns:DataWplywu>
+    <tns:K_45>138.30</tns:K_45>
+    <tns:K_46>31.81</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>47</tns:LpZakupu>
+    <tns:NrDostawcy>3900000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 390</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A888/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-10</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-10</tns:DataWplywu>
+    <tns:K_45>718.00</tns:K_45>
+    <tns:K_46>165.14</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>48</tns:LpZakupu>
+    <tns:NrDostawcy>240-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 240</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A11194-2017-685</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-10</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-10</tns:DataWplywu>
+    <tns:K_45>67.38</tns:K_45>
+    <tns:K_46>15.49</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>49</tns:LpZakupu>
+    <tns:NrDostawcy>4100000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 410</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A6362889</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-14</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-14</tns:DataWplywu>
+    <tns:K_45>169.40</tns:K_45>
+    <tns:K_46>38.96</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>50</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-16</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-16</tns:DataWplywu>
+    <tns:K_45>420.00</tns:K_45>
+    <tns:K_46>96.60</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>51</tns:LpZakupu>
+    <tns:NrDostawcy>340-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 340</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A86917/AA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-16</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-16</tns:DataWplywu>
+    <tns:K_45>105.68</tns:K_45>
+    <tns:K_46>24.31</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>52</tns:LpZakupu>
+    <tns:NrDostawcy>4200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 420</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A806613/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>124.50</tns:K_45>
+    <tns:K_46>28.63</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>53</tns:LpZakupu>
+    <tns:NrDostawcy>4300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 430</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0030/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>186.99</tns:K_45>
+    <tns:K_46>43.01</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>54</tns:LpZakupu>
+    <tns:NrDostawcy>240-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 240</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A11480-2017-685</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>78.93</tns:K_45>
+    <tns:K_46>18.15</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>55</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0773</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>4774.00</tns:K_45>
+    <tns:K_46>1098.02</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>56</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0773</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>625.00</tns:K_45>
+    <tns:K_46>143.75</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>57</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0774</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>2825.90</tns:K_45>
+    <tns:K_46>649.96</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>58</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0774</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-17</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-17</tns:DataWplywu>
+    <tns:K_45>482.50</tns:K_45>
+    <tns:K_46>110.98</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>59</tns:LpZakupu>
+    <tns:NrDostawcy>230-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 230</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AV007647AA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-18</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-18</tns:DataWplywu>
+    <tns:K_45>18.00</tns:K_45>
+    <tns:K_46>4.14</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>60</tns:LpZakupu>
+    <tns:NrDostawcy>4400000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 440</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0/8/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-18</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-18</tns:DataWplywu>
+    <tns:K_45>152.59</tns:K_45>
+    <tns:K_46>35.10</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>61</tns:LpZakupu>
+    <tns:NrDostawcy>450-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 450</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A889/MAG/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-21</tns:DataWplywu>
+    <tns:K_45>108.96</tns:K_45>
+    <tns:K_46>25.06</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>62</tns:LpZakupu>
+    <tns:NrDostawcy>110-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 110</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A100019412</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-21</tns:DataWplywu>
+    <tns:K_45>271.92</tns:K_45>
+    <tns:K_46>62.54</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>63</tns:LpZakupu>
+    <tns:NrDostawcy>290-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 290</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A093/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-21</tns:DataWplywu>
+    <tns:K_45>128.37</tns:K_45>
+    <tns:K_46>29.53</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>64</tns:LpZakupu>
+    <tns:NrDostawcy>350-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 350</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A92866</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-21</tns:DataWplywu>
+    <tns:K_45>195.80</tns:K_45>
+    <tns:K_46>45.03</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>65</tns:LpZakupu>
+    <tns:NrDostawcy>700-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 700</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA-A-AAA-17-06174</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-21</tns:DataWplywu>
+    <tns:K_45>3485.40</tns:K_45>
+    <tns:K_46>801.64</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>66</tns:LpZakupu>
+    <tns:NrDostawcy>240-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 240</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A11642-2017-685</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-21</tns:DataWplywu>
+    <tns:K_45>54.42</tns:K_45>
+    <tns:K_46>12.51</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>67</tns:LpZakupu>
+    <tns:NrDostawcy>4800000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 480</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/539/M/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-22</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-22</tns:DataWplywu>
+    <tns:K_45>25.21</tns:K_45>
+    <tns:K_46>5.80</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>68</tns:LpZakupu>
+    <tns:NrDostawcy>290-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 290</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A917/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-22</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-22</tns:DataWplywu>
+    <tns:K_45>157.40</tns:K_45>
+    <tns:K_46>36.20</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>69</tns:LpZakupu>
+    <tns:NrDostawcy>5100000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 510</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A18/016/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-22</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-22</tns:DataWplywu>
+    <tns:K_45>449.64</tns:K_45>
+    <tns:K_46>103.42</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>70</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0790</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-22</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-22</tns:DataWplywu>
+    <tns:K_45>4917.80</tns:K_45>
+    <tns:K_46>1131.09</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>71</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0790</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-22</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-22</tns:DataWplywu>
+    <tns:K_45>350.00</tns:K_45>
+    <tns:K_46>80.50</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>72</tns:LpZakupu>
+    <tns:NrDostawcy>5200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 520</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A80/04275/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-23</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-23</tns:DataWplywu>
+    <tns:K_45>313.65</tns:K_45>
+    <tns:K_46>72.14</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>73</tns:LpZakupu>
+    <tns:NrDostawcy>2600000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 260</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>Ask/08/05658/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-23</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-23</tns:DataWplywu>
+    <tns:K_45>250.00</tns:K_45>
+    <tns:K_46>57.50</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>74</tns:LpZakupu>
+    <tns:NrDostawcy>5300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 530</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A072840329</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-23</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-23</tns:DataWplywu>
+    <tns:K_45>124.23</tns:K_45>
+    <tns:K_46>28.57</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>75</tns:LpZakupu>
+    <tns:NrDostawcy>5400000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 540</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AK201706058</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-23</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-23</tns:DataWplywu>
+    <tns:K_45>12617.50</tns:K_45>
+    <tns:K_46>2902.03</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>76</tns:LpZakupu>
+    <tns:NrDostawcy>4300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 430</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0042/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-23</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-23</tns:DataWplywu>
+    <tns:K_45>275.61</tns:K_45>
+    <tns:K_46>63.39</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>77</tns:LpZakupu>
+    <tns:NrDostawcy>5500000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 550</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A0817/13963</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-24</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-24</tns:DataWplywu>
+    <tns:K_45>-136.43</tns:K_45>
+    <tns:K_46>-31.38</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>78</tns:LpZakupu>
+    <tns:NrDostawcy>5500000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 550</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A/1017/20100</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-24</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-24</tns:DataWplywu>
+    <tns:K_45>3067.48</tns:K_45>
+    <tns:K_46>705.52</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>79</tns:LpZakupu>
+    <tns:NrDostawcy>5600000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 560</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A60/B/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-24</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-24</tns:DataWplywu>
+    <tns:K_45>283.43</tns:K_45>
+    <tns:K_46>65.19</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>80</tns:LpZakupu>
+    <tns:NrDostawcy>290-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 290</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A940/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-24</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-24</tns:DataWplywu>
+    <tns:K_45>142.20</tns:K_45>
+    <tns:K_46>32.71</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>81</tns:LpZakupu>
+    <tns:NrDostawcy>5700000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 570</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A44/8/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-24</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-24</tns:DataWplywu>
+    <tns:K_45>176.26</tns:K_45>
+    <tns:K_46>40.54</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>82</tns:LpZakupu>
+    <tns:NrDostawcy>5800000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 580</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A846/08/17/AAA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-24</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-24</tns:DataWplywu>
+    <tns:K_45>244.42</tns:K_45>
+    <tns:K_46>56.22</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>83</tns:LpZakupu>
+    <tns:NrDostawcy>5900000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 590</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A823/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-25</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-25</tns:DataWplywu>
+    <tns:K_45>250.00</tns:K_45>
+    <tns:K_46>57.50</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>84</tns:LpZakupu>
+    <tns:NrDostawcy>5900000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 590</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A800/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-25</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-25</tns:DataWplywu>
+    <tns:K_45>1000.00</tns:K_45>
+    <tns:K_46>230.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>85</tns:LpZakupu>
+    <tns:NrDostawcy>6100000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 610</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A090371464</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-25</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-25</tns:DataWplywu>
+    <tns:K_45>511.60</tns:K_45>
+    <tns:K_46>117.67</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>86</tns:LpZakupu>
+    <tns:NrDostawcy>8000000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 800</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A27179790817</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>501.88</tns:K_45>
+    <tns:K_46>115.44</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>87</tns:LpZakupu>
+    <tns:NrDostawcy>6200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 620</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A60/A/AA/3614/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>139.65</tns:K_45>
+    <tns:K_46>32.11</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>88</tns:LpZakupu>
+    <tns:NrDostawcy>6200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 620</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A60/A/AA/135/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>47.06</tns:K_45>
+    <tns:K_46>10.82</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>89</tns:LpZakupu>
+    <tns:NrDostawcy>6200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 620</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A36/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>58.41</tns:K_45>
+    <tns:K_46>13.44</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>90</tns:LpZakupu>
+    <tns:NrDostawcy>6200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 620</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AGG138/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>55.00</tns:K_45>
+    <tns:K_46>12.66</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>91</tns:LpZakupu>
+    <tns:NrDostawcy>6200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 620</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AGG139/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>58.41</tns:K_45>
+    <tns:K_46>13.44</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>92</tns:LpZakupu>
+    <tns:NrDostawcy>6200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 620</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AGG137/08/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>58.54</tns:K_45>
+    <tns:K_46>13.46</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>93</tns:LpZakupu>
+    <tns:NrDostawcy>2200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 220</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A8272480</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>4233.70</tns:K_45>
+    <tns:K_46>973.75</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>94</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A15/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>970.00</tns:K_45>
+    <tns:K_46>223.10</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>95</tns:LpZakupu>
+    <tns:NrDostawcy>230-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 230</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AV007943AA</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>49.68</tns:K_45>
+    <tns:K_46>11.43</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>96</tns:LpZakupu>
+    <tns:NrDostawcy>190-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 190</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AS/2582/2017/STW</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-21</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>270.90</tns:K_45>
+    <tns:K_46>62.31</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>97</tns:LpZakupu>
+    <tns:NrDostawcy>300-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 300</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA/AA/17/0809</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-28</tns:DataWplywu>
+    <tns:K_45>5195.40</tns:K_45>
+    <tns:K_46>1194.94</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>98</tns:LpZakupu>
+    <tns:NrDostawcy>3300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 330</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A21/17/08</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-29</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-29</tns:DataWplywu>
+    <tns:K_45>820.00</tns:K_45>
+    <tns:K_46>188.60</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>99</tns:LpZakupu>
+    <tns:NrDostawcy>130-000-00-00</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 130</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AA25/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-28</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-29</tns:DataWplywu>
+    <tns:K_45>10000.00</tns:K_45>
+    <tns:K_46>2300.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>100</tns:LpZakupu>
+    <tns:NrDostawcy>240-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 240</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A11991-2017-685</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-29</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-29</tns:DataWplywu>
+    <tns:K_45>71.23</tns:K_45>
+    <tns:K_46>16.38</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>101</tns:LpZakupu>
+    <tns:NrDostawcy>190-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 190</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AS/2692/2017/STW</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-30</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-30</tns:DataWplywu>
+    <tns:K_45>1628.40</tns:K_45>
+    <tns:K_46>374.53</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>102</tns:LpZakupu>
+    <tns:NrDostawcy>6300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 630</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A21/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-30</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-30</tns:DataWplywu>
+    <tns:K_45>14400.00</tns:K_45>
+    <tns:K_46>3312.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>103</tns:LpZakupu>
+    <tns:NrDostawcy>5300000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 530</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A072840477</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>141.40</tns:K_45>
+    <tns:K_46>32.52</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>104</tns:LpZakupu>
+    <tns:NrDostawcy>4200000000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 420</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A934246/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>1283.76</tns:K_45>
+    <tns:K_46>295.26</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>105</tns:LpZakupu>
+    <tns:NrDostawcy>180-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 180</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A4722/K/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>49.89</tns:K_45>
+    <tns:K_46>11.47</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>106</tns:LpZakupu>
+    <tns:NrDostawcy>640-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 640</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AV000266</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>366.30</tns:K_45>
+    <tns:K_46>84.25</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>107</tns:LpZakupu>
+    <tns:NrDostawcy>640-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 640</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>AV001340</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>566.17</tns:K_45>
+    <tns:K_46>130.22</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>108</tns:LpZakupu>
+    <tns:NrDostawcy>650-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 650</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A/1/17/000319</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-29</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>8402.70</tns:K_45>
+    <tns:K_46>1932.62</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>109</tns:LpZakupu>
+    <tns:NrDostawcy>660-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 660</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A21/17</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>103.58</tns:K_45>
+    <tns:K_46>23.82</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupWiersz xmlns:tns="http://jpk.mf.gov.pl/wzor/2016/10/26/10261/" xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" typ="G">
+    <tns:LpZakupu>110</tns:LpZakupu>
+    <tns:NrDostawcy>670-00-00-000</tns:NrDostawcy>
+    <tns:NazwaDostawcy>Firma 670</tns:NazwaDostawcy>
+    <tns:AdresDostawcy>Adres</tns:AdresDostawcy>
+    <tns:DowodZakupu>A03/08/2017</tns:DowodZakupu>
+    <tns:DataZakupu>2017-08-31</tns:DataZakupu>
+    <tns:DataWplywu>2017-08-31</tns:DataWplywu>
+    <tns:K_45>100.00</tns:K_45>
+    <tns:K_46>23.00</tns:K_46>
+  </tns:ZakupWiersz>
+  <tns:ZakupCtrl>
+    <tns:LiczbaWierszyZakupow>110</tns:LiczbaWierszyZakupow>
+    <tns:PodatekNaliczony>35563.42</tns:PodatekNaliczony>
+  </tns:ZakupCtrl>
+</tns:JPK>

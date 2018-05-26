@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 
@@ -41,6 +42,7 @@ class SprzedazWiersz(models.Model):
     K_37 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     K_38 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     K_39 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    document = models.ForeignKey('LoadedFile', related_name='sales', on_delete=models.CASCADE)
 
 class ZakupWiersz(models.Model):
     LpZakupu = models.IntegerField()
@@ -58,4 +60,10 @@ class ZakupWiersz(models.Model):
     K_48 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     K_49 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     K_50 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
+    document = models.ForeignKey('LoadedFile', related_name='purchases', on_delete=models.CASCADE)
 
+
+class LoadedFile(models.Model):
+    user = models.ForeignKey(User, related_name='file', on_delete=models.CASCADE)
+    path = models.FileField(upload_to='files')
+    date_creation = models.DateTimeField(auto_now_add=True)
