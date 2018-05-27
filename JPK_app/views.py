@@ -1,4 +1,4 @@
-
+import os
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponseBadRequest, HttpResponse, Http404
@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import SprzedazWiersz, ZakupWiersz, LoadedFile
 from .forms import LoadedFileForm, RegistrationForm, LogInForm
 from django.contrib.auth import login, logout, authenticate
+from django.conf import settings
 
 import xml.etree.ElementTree as etree
 import xlsxwriter
@@ -18,7 +19,7 @@ import xlsxwriter
 class ConvertToDBView(LoginRequiredMixin, View):
 
     def get_data(self, file, search_param, model):
-
+        # extraction of data from xml file and conversion to db rows
         tree = etree.parse(file.path.url[1::])
         root = tree.getroot()
         container = {}
@@ -29,11 +30,13 @@ class ConvertToDBView(LoginRequiredMixin, View):
             container.clear()
 
     def get(self, request):
+        # displaying upload form
         form = LoadedFileForm()
         ctx = {'form': form}
         return render(request, 'sprzedaz.html', ctx)
 
     def post(self, request):
+        # handling uploaded file
         user = User.objects.get(pk=request.user.id)
         form = LoadedFileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -53,15 +56,17 @@ class ConvertToDBView(LoginRequiredMixin, View):
 class ExportToExcel(LoginRequiredMixin, View):
 
     def get_headers(self, obj_keys, query_set):
+        # creating list of db columns that are not empty
         container = []
         for el in obj_keys:
-            if el not in ['_state', 'id', 'document_id']:
-                test_if_empty = len([True for obj in query_set.objects.all() if getattr(obj, el) == None])
-                if test_if_empty != query_set.objects.count():
-                    container.append(el)
+            # if el not in ['_state', 'id', 'document_id']:
+            test_if_empty = len([True for obj in query_set.objects.all() if getattr(obj, el) == None])
+            if test_if_empty != query_set.objects.count():
+                container.append(el)
         return container
 
-    def worksheet_generate(self, headers, sheet, keys, query_set, bold, date_fields, date, money_fields, money, num_fields, numbers, strings):
+    def worksheet_generate(self, headers, sheet, query_set, bold, date_fields, date, money_fields, money, num_fields, numbers, strings):
+        # building excel sheet
         col = 0
         row = 1
         for el in headers:
@@ -88,9 +93,11 @@ class ExportToExcel(LoginRequiredMixin, View):
 
 
     def get(self, request):
-        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-        response['Content-Disposition'] = "attachment; filename=test.xlsx"
 
+        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = "attachment; filename=jpk_vat.xlsx"
+
+        # basic excel settings
         workbook = xlsxwriter.Workbook(response, {'in_memory': True})
         worksheet1 = workbook.add_worksheet()
         worksheet2 = workbook.add_worksheet()
@@ -102,13 +109,14 @@ class ExportToExcel(LoginRequiredMixin, View):
         numbers = workbook.add_format({'num_format': '0'})
         strings = workbook.add_format({'num_format': '@'})
 
+
         sale_keys = ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta', 'DowodSprzedazy',
                      'DataWystawienia', 'DataSprzedazy', 'K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17',
                      'K_18', 'K_19', 'K_20', 'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29',
-                     'K_30', 'K_31', 'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', '_state', 'id', 'document_id']
+                     'K_30', 'K_31', 'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39']
 
         purchase_keys = ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu', 'DataZakupu', 'DataWplywu',
-                         'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50', '_state', 'id', 'document_id']
+                         'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
 
         num_fields = ['LpSprzedazy', 'LpZakupu']
         date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu']
@@ -119,14 +127,23 @@ class ExportToExcel(LoginRequiredMixin, View):
         sale_headers = self.get_headers(sale_keys, SprzedazWiersz)
         purchase_headers = self.get_headers(purchase_keys, ZakupWiersz)
 
-        self.worksheet_generate(sale_headers, worksheet1, sale_keys, SprzedazWiersz, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
-        self.worksheet_generate(purchase_headers, worksheet2, purchase_keys, ZakupWiersz, bold, date_fields, date,
+        self.worksheet_generate(sale_headers, worksheet1, SprzedazWiersz, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
+        self.worksheet_generate(purchase_headers, worksheet2, ZakupWiersz, bold, date_fields, date,
                                 money_fields, money, num_fields, numbers, strings)
 
         workbook.close()
+
+        for sale in SprzedazWiersz.objects.all():
+            sale.delete()
+
+        for purchase in ZakupWiersz.objects.all():
+            purchase.delete()
+
+        for file in LoadedFile.objects.all():
+            file.delete()
+            os.remove(os.path.join(settings.MEDIA_ROOT, file))
+
         return response
-
-
 
 
 class Registration(View):
@@ -149,6 +166,7 @@ class Registration(View):
             'form': form,
         }
         return render(request, 'registration.html', ctx)
+
 
 class LogInView(View):
     def get(self, request):
@@ -176,7 +194,6 @@ class LogInView(View):
             'form': form,
         }
         return render(request, 'login.html', ctx)
-
 
 
 def logout_user(request):
