@@ -1,6 +1,7 @@
+
 from django.shortcuts import render, redirect
 from django.views import View
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest, HttpResponse, Http404
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import SprzedazWiersz, ZakupWiersz, LoadedFile
@@ -48,6 +49,7 @@ class ConvertToDBView(LoginRequiredMixin, View):
         }
         return redirect(request, 'sprzedaz.html', ctx)
 
+
 class ExportToExcel(LoginRequiredMixin, View):
 
     def get_headers(self, obj_keys, query_set):
@@ -86,7 +88,10 @@ class ExportToExcel(LoginRequiredMixin, View):
 
 
     def get(self, request):
-        workbook = xlsxwriter.Workbook('jpk_vat.xlsx')
+        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = "attachment; filename=test.xlsx"
+
+        workbook = xlsxwriter.Workbook(response, {'in_memory': True})
         worksheet1 = workbook.add_worksheet()
         worksheet2 = workbook.add_worksheet()
 
@@ -119,8 +124,9 @@ class ExportToExcel(LoginRequiredMixin, View):
                                 money_fields, money, num_fields, numbers, strings)
 
         workbook.close()
+        return response
 
-        return redirect('conversion_db')
+
 
 
 class Registration(View):
