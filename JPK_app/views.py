@@ -65,7 +65,8 @@ class ExportToExcel(LoginRequiredMixin, View):
                 container.append(el)
         return container
 
-    def worksheet_generate(self, headers, sheet, query_set, bold, date_fields, date, money_fields, money, num_fields, numbers, strings):
+    def worksheet_generate(self, headers, sheet, query_set, bold, date_fields, date, money_fields, money, num_fields, numbers, strings, file_id):
+        document = LoadedFile.objects.get(pk=file_id)
         # building excel sheet
         col = 0
         row = 1
@@ -75,7 +76,7 @@ class ExportToExcel(LoginRequiredMixin, View):
             sheet.write(0, col, el, bold)
             col += 1
 
-        for el in query_set.objects.all():
+        for el in query_set.objects.filter(document=document):
             col = 0
             for header in headers:
                 if header in date_fields:
@@ -90,7 +91,6 @@ class ExportToExcel(LoginRequiredMixin, View):
             row += 1
 
         return sheet
-
 
     def get(self, request, file_id):
 
@@ -111,7 +111,6 @@ class ExportToExcel(LoginRequiredMixin, View):
         numbers = workbook.add_format({'num_format': '0'})
         strings = workbook.add_format({'num_format': '@'})
 
-
         sale_keys = ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta', 'DowodSprzedazy',
                      'DataWystawienia', 'DataSprzedazy', 'K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17',
                      'K_18', 'K_19', 'K_20', 'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29',
@@ -129,12 +128,12 @@ class ExportToExcel(LoginRequiredMixin, View):
         sale_headers = self.get_headers(sale_keys, SprzedazWiersz, file_id)
         purchase_headers = self.get_headers(purchase_keys, ZakupWiersz, file_id)
 
-        self.worksheet_generate(sale_headers, worksheet1, SprzedazWiersz, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
+        self.worksheet_generate(sale_headers, worksheet1, SprzedazWiersz, bold, date_fields, date,
+                                money_fields, money, num_fields, numbers, strings, file_id)
         self.worksheet_generate(purchase_headers, worksheet2, ZakupWiersz, bold, date_fields, date,
-                                money_fields, money, num_fields, numbers, strings)
+                                money_fields, money, num_fields, numbers, strings, file_id)
 
         workbook.close()
-
 
         # removing db rows and loaded file
         for sale in SprzedazWiersz.objects.filter(document=document):

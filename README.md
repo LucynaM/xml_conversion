@@ -6,6 +6,6 @@ JPK_VAT file conversion (xml => db => excel)
 3. writing db records as excel file with XlsxWriter (in progress)
 4. Files uplaod, files download
 5. user registration panel, login/logout mechanism
-4. ToDo:
-    * access file protection
+7. deleting xml file after processing
+8. ToDo:
     * layout deployment (frontend)
