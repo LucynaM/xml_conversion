@@ -33,7 +33,7 @@ class ConvertToDBView(LoginRequiredMixin, View):
         # displaying upload form
         form = LoadedFileForm()
         ctx = {'form': form}
-        return render(request, 'sprzedaz.html', ctx)
+        return render(request, 'conversion.html', ctx)
 
     def post(self, request):
         # handling uploaded file
@@ -45,23 +45,23 @@ class ConvertToDBView(LoginRequiredMixin, View):
             self.get_data(file, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}SprzedazWiersz', SprzedazWiersz)
             self.get_data(file, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}ZakupWiersz', ZakupWiersz)
 
-            return redirect('export')
+            return redirect('export', file_id=file.pk)
 
         ctx = {
             'form': form,
         }
-        return redirect(request, 'sprzedaz.html', ctx)
+        return redirect(request, 'conversion.html', ctx)
 
 
 class ExportToExcel(LoginRequiredMixin, View):
 
-    def get_headers(self, obj_keys, query_set):
+    def get_headers(self, obj_keys, query_set, file_id):
         # creating list of db columns that are not empty
+        document = LoadedFile.objects.get(pk=file_id)
         container = []
         for el in obj_keys:
-            # if el not in ['_state', 'id', 'document_id']:
-            test_if_empty = len([True for obj in query_set.objects.all() if getattr(obj, el) == None])
-            if test_if_empty != query_set.objects.count():
+            test_if_empty = len([True for obj in query_set.objects.filter(document=document) if getattr(obj, el) == None])
+            if test_if_empty != query_set.objects.filter(document=document).count():
                 container.append(el)
         return container
 
@@ -92,7 +92,9 @@ class ExportToExcel(LoginRequiredMixin, View):
         return sheet
 
 
-    def get(self, request):
+    def get(self, request, file_id):
+
+        document = LoadedFile.objects.get(pk=file_id)
 
         response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = "attachment; filename=jpk_vat.xlsx"
@@ -124,8 +126,8 @@ class ExportToExcel(LoginRequiredMixin, View):
                         'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31', 'K_32', 'K_33',
                         'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
 
-        sale_headers = self.get_headers(sale_keys, SprzedazWiersz)
-        purchase_headers = self.get_headers(purchase_keys, ZakupWiersz)
+        sale_headers = self.get_headers(sale_keys, SprzedazWiersz, file_id)
+        purchase_headers = self.get_headers(purchase_keys, ZakupWiersz, file_id)
 
         self.worksheet_generate(sale_headers, worksheet1, SprzedazWiersz, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
         self.worksheet_generate(purchase_headers, worksheet2, ZakupWiersz, bold, date_fields, date,
@@ -133,15 +135,16 @@ class ExportToExcel(LoginRequiredMixin, View):
 
         workbook.close()
 
-        for sale in SprzedazWiersz.objects.all():
+
+        # removing db rows and loaded file
+        for sale in SprzedazWiersz.objects.filter(document=document):
             sale.delete()
 
-        for purchase in ZakupWiersz.objects.all():
+        for purchase in ZakupWiersz.objects.filter(document=document):
             purchase.delete()
 
-        for file in LoadedFile.objects.all():
-            file.delete()
-            os.remove(os.path.join(settings.MEDIA_ROOT, file))
+        document.delete()
+        os.remove(os.path.join(settings.MEDIA_ROOT, document.name))
 
         return response
 

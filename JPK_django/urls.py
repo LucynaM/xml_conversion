@@ -22,7 +22,7 @@ from JPK_app.views import ConvertToDBView, ExportToExcel, Registration, LogInVie
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^conversion_db/$', ConvertToDBView.as_view(), name='conversion_db'),
-    url(r'^export/$', ExportToExcel.as_view(), name="export"),
+    url(r'^export/(?P<file_id>(\d)+)/$', ExportToExcel.as_view(), name="export"),
     url(r'^registration/$', Registration.as_view(), name="registration"),
     url(r'^login/$', LogInView.as_view(), name="login"),
     url(r'^logout/$', logout, name="logout"),
