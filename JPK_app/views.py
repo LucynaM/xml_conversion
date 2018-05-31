@@ -22,12 +22,14 @@ class ConvertToDBView(LoginRequiredMixin, View):
         # extraction of data from xml file and conversion to db rows
         tree = etree.parse(file.path.url[1::])
         root = tree.getroot()
+        template_name = root.tag[:root.tag.index('JPK')]
         container = {}
-        for row in root.findall(search_param):
+        for row in root.findall(template_name + search_param):
             for element in row:
                 container[element.tag[element.tag.index('}')+1:]] = element.text
             model.objects.create(document=file, **container)
             container.clear()
+            
 
     def get(self, request):
         # displaying upload form
@@ -42,15 +44,18 @@ class ConvertToDBView(LoginRequiredMixin, View):
         if form.is_valid():
             file = LoadedFile.objects.create(user=user, **form.cleaned_data)
 
-            self.get_data(file, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}SprzedazWiersz', SprzedazWiersz)
-            self.get_data(file, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}ZakupWiersz', ZakupWiersz)
+            self.get_data(file, 'SprzedazWiersz', SprzedazWiersz)
+            self.get_data(file, 'ZakupWiersz', ZakupWiersz)
+
+            # {http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}KontoZapis
+            # {http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}Dziennik
 
             return redirect('export', file_id=file.pk)
 
         ctx = {
             'form': form,
         }
-        return redirect(request, 'conversion.html', ctx)
+        return render(request, 'conversion.html', ctx)
 
 
 class ExportToExcel(LoginRequiredMixin, View):
