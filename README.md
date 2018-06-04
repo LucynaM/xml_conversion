@@ -8,4 +8,5 @@ JPK_VAT file conversion (xml => db => excel)
 5. user registration panel, login/logout mechanism
 7. deleting xml file after processing
 8. ToDo:
+    * looking for a more efficient way of processing big xml files (iterparse, lxml, sax???) in order to handle JPK_KR
     * layout deployment (frontend)

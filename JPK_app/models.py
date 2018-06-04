@@ -71,3 +71,31 @@ class LoadedFile(models.Model):
     @property
     def name(self):
         return '{}'.format(self.path.name)
+
+class Dziennik(models.Model):
+    LpZapisuDziennika = models.IntegerField()
+    NrZapisuDziennika = models.CharField(max_length=256, db_index=True)
+    OpisDziennika = models.CharField(max_length=256, db_index=True)
+    NrDowoduKsiegowego = models.CharField(max_length=256)
+    RodzajDowodu = models.CharField(max_length=256)
+    DataOperacji = models.DateField()
+    DataDowodu = models.DateField()
+    DataKsiegowania = models.DateField()
+    KodOperatora = models.CharField(max_length=256)
+    OpisOperacji = models.CharField(max_length=256)
+    DziennikKwotaOperacji = models.DecimalField(max_digits=18, decimal_places=2)
+
+
+class KontoZapis(models.Model):
+    LpZapisu = models.IntegerField()
+    NrZapisu = models.ForeignKey(Dziennik, related_name='entries')
+    KodKontaWinien = models.CharField(max_length=256, null=True)
+    KwotaWinien = models.DecimalField(max_digits=18, decimal_places=2, null=True)
+    KwotaWinienWaluta = models.DecimalField(max_digits=18, decimal_places=2, null=True)
+    KodWalutyWinien = models.CharField(max_length=256, null=True)
+    OpisZapisuWinien = models.CharField(max_length=256, null=True)
+    KodKontaMa = models.CharField(max_length=256, null=True)
+    KwotaMa = models.DecimalField(max_digits=18, decimal_places=2, null=True)
+    KwotaMaWaluta = models.DecimalField(max_digits=18, decimal_places=2, null=True)
+    KodWalutyMa = models.CharField(max_length=256, null=True)
+    OpisZapisuMa = models.CharField(max_length=256, null=True)
