@@ -4,58 +4,95 @@ from django.views import View
 from django.http import HttpResponseBadRequest, HttpResponse, Http404
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import SprzedazWiersz, ZakupWiersz, LoadedFile
+from .models import SprzedazWiersz, ZakupWiersz, LoadedFile, Dziennik, KontoZapis
 from .forms import LoadedFileForm, RegistrationForm, LogInForm
 from django.contrib.auth import login, logout, authenticate
 from django.conf import settings
 
-import xml.etree.ElementTree as etree
 import xlsxwriter
+import lxml.etree as ET
+import io
+
 
 
 # Create your views here.
 
 
-class ConvertToDBView(LoginRequiredMixin, View):
 
-    def get_data(self, file, search_param, model):
-        # extraction of data from xml file and conversion to db rows
-        tree = etree.parse(file.path.url[1::])
-        root = tree.getroot()
-        template_name = root.tag[:root.tag.index('JPK')]
-        container = {}
-        for row in root.findall(template_name + search_param):
-            for element in row:
-                container[element.tag[element.tag.index('}')+1:]] = element.text
-            model.objects.create(document=file, **container)
-            container.clear()
-            
+class ConvertKRToDBView(LoginRequiredMixin, View):
+
+    def fast_iter(self):
+
+        def fixtag(ns, tag, nsmap):
+            return '{' + nsmap[ns] + '}'+ tag
+
+        nsmap = {}
+        def mod_fast_iter(func, tag, *args, **kwargs):
+            context = ET.iterparse('JPK/JPK_KR_20170101_20171231_4d7904ce.xml', events=('end', 'start-ns',))
+            results = []
+            for event, elem in context:
+                if event == 'start-ns':
+                    ns, url = elem
+                    nsmap[ns] = url
+                if event == 'end':
+
+                    if elem.tag == fixtag('tns', tag, nsmap):
+
+                        func(elem, results, *args, **kwargs)
+                        elem.clear()
+                        for ancestor in elem.xpath('ancestor-or-self::*'):
+                            while ancestor.getprevious() is not None:
+                                del ancestor.getparent()[0]
+            del context
+            return results
+
+
+
+        def process_elem(elem, results, *args, **kwargs):
+            container = {}
+            for child in elem.iterchildren():
+                container[child.tag[child.tag.index('}')+1:]] = child.text
+            results.append(container)
+
+        dziennik = mod_fast_iter(process_elem, 'Dziennik')
+        print(dziennik)
+        # for result in dziennik:
+        #     Dziennik.objects.create(**result)
+
+        kontozapis = mod_fast_iter(process_elem, 'KontoZapis')
+        print(kontozapis)
+        # for result in kontozapis:
+        #     nr_zapisu = result.pop('NrZapisu')
+        #     book_element = Dziennik.objects.get(NrZapisuDziennika=nr_zapisu)
+        #     KontoZapis.objects.create(NrZapisu=book_element, **result)
+
 
     def get(self, request):
         # displaying upload form
         form = LoadedFileForm()
         ctx = {'form': form}
+
+        self.fast_iter()
+
         return render(request, 'conversion.html', ctx)
 
-    def post(self, request):
+    # def post(self, request):
         # handling uploaded file
-        user = User.objects.get(pk=request.user.id)
-        form = LoadedFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = LoadedFile.objects.create(user=user, **form.cleaned_data)
+        # user = User.objects.get(pk=request.user.id)
+        # form = LoadedFileForm(request.POST, request.FILES)
+        # if form.is_valid():
+        #     file = LoadedFile.objects.create(user=user, **form.cleaned_data)
+        #
+        #     self.get_data(file, 'SprzedazWiersz', SprzedazWiersz)
+        #     self.get_data(file, 'ZakupWiersz', ZakupWiersz)
 
-            self.get_data(file, 'SprzedazWiersz', SprzedazWiersz)
-            self.get_data(file, 'ZakupWiersz', ZakupWiersz)
+        #     return redirect('export', file_id=file.pk)
+        #
+        # ctx = {
+        #     'form': form,
+        # }
+        # return render(request, 'conversion.html', ctx)
 
-            # {http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}KontoZapis
-            # {http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}Dziennik
-
-            return redirect('export', file_id=file.pk)
-
-        ctx = {
-            'form': form,
-        }
-        return render(request, 'conversion.html', ctx)
 
 
 class ExportToExcel(LoginRequiredMixin, View):
