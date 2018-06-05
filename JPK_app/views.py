@@ -11,68 +11,61 @@ from django.conf import settings
 
 import xlsxwriter
 import lxml.etree as ET
-import io
 
 
 
 # Create your views here.
 
+class ConvertXLMView(LoginRequiredMixin, View):
 
+    # building element tag name
+    def fixtag(self, ns, tag, nsmap):
+        return '{' + nsmap[ns] + '}' + tag
 
-class ConvertKRToDBView(LoginRequiredMixin, View):
-
-    def fast_iter(self):
-
-        def fixtag(ns, tag, nsmap):
-            return '{' + nsmap[ns] + '}'+ tag
+    # iterating through xml structure Based on Liza Daly's fast_iter
+    # http://www.ibm.com/developerworks/xml/library/x-hiperfparse/
+    def fast_iter(self, func, tag, *args, **kwargs):
 
         nsmap = {}
-        def mod_fast_iter(func, tag, *args, **kwargs):
-            context = ET.iterparse('JPK/JPK_KR_20170101_20171231_4d7904ce.xml', events=('end', 'start-ns',))
-            results = []
-            for event, elem in context:
-                if event == 'start-ns':
-                    ns, url = elem
-                    nsmap[ns] = url
-                if event == 'end':
+        context = ET.iterparse('JPK/JPK_KR_20170101_20171231_4d7904ce.xml', events=('end', 'start-ns',))
+        results = []
 
-                    if elem.tag == fixtag('tns', tag, nsmap):
+        for event, elem in context:
+            if event == 'start-ns':
+                ns, url = elem
+                nsmap[ns] = url
+            if event == 'end':
+                if elem.tag == self.fixtag('tns', tag, nsmap):
+                    func(elem, results, *args, **kwargs)
+                    elem.clear()
+                    for ancestor in elem.xpath('ancestor-or-self::*'):
+                        while ancestor.getprevious() is not None:
+                            del ancestor.getparent()[0]
+        del context
+        return results
 
-                        func(elem, results, *args, **kwargs)
-                        elem.clear()
-                        for ancestor in elem.xpath('ancestor-or-self::*'):
-                            while ancestor.getprevious() is not None:
-                                del ancestor.getparent()[0]
-            del context
-            return results
-
-
-
-        def process_elem(elem, results, *args, **kwargs):
-            container = {}
-            for child in elem.iterchildren():
-                container[child.tag[child.tag.index('}')+1:]] = child.text
-            results.append(container)
-
-        dziennik = mod_fast_iter(process_elem, 'Dziennik')
-        print(dziennik)
-        # for result in dziennik:
-        #     Dziennik.objects.create(**result)
-
-        kontozapis = mod_fast_iter(process_elem, 'KontoZapis')
-        print(kontozapis)
-        # for result in kontozapis:
-        #     nr_zapisu = result.pop('NrZapisu')
-        #     book_element = Dziennik.objects.get(NrZapisuDziennika=nr_zapisu)
-        #     KontoZapis.objects.create(NrZapisu=book_element, **result)
-
+    def process_elem(self, elem, results, *args, **kwargs):
+        container = {}
+        for child in elem.iterchildren():
+            container[child.tag[child.tag.index('}')+1:]] = child.text
+        results.append(container)
 
     def get(self, request):
         # displaying upload form
         form = LoadedFileForm()
         ctx = {'form': form}
 
-        self.fast_iter()
+        dziennik = self.fast_iter(self.process_elem, 'Dziennik')
+        print(dziennik)
+        # for result in dziennik:
+        #     Dziennik.objects.create(**result)
+
+        kontozapis = self.fast_iter(self.process_elem, 'KontoZapis')
+        print(kontozapis)
+        # for result in kontozapis:
+        #     nr_zapisu = result.pop('NrZapisu')
+        #     book_element = Dziennik.objects.get(NrZapisuDziennika=nr_zapisu)
+        #     KontoZapis.objects.create(NrZapisu=book_element, **result)
 
         return render(request, 'conversion.html', ctx)
 
