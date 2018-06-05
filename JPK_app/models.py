@@ -62,11 +62,16 @@ class ZakupWiersz(models.Model):
     K_50 = models.DecimalField(max_digits=16, decimal_places=2, null=True)
     document = models.ForeignKey('LoadedFile', related_name='purchases', on_delete=models.CASCADE)
 
+TYPES = (
+    (1, 'VAT'),
+    (2, 'KR'),
+)
 
 class LoadedFile(models.Model):
     user = models.ForeignKey(User, related_name='file', on_delete=models.CASCADE)
     path = models.FileField(upload_to='files')
     date_creation = models.DateTimeField(auto_now_add=True)
+    type = models.IntegerField(choices=TYPES, default=1)
 
     @property
     def name(self):

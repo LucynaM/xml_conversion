@@ -22,12 +22,13 @@ class ConvertXLMView(LoginRequiredMixin, View):
     def fixtag(self, ns, tag, nsmap):
         return '{' + nsmap[ns] + '}' + tag
 
+
     # iterating through xml structure Based on Liza Daly's fast_iter
     # http://www.ibm.com/developerworks/xml/library/x-hiperfparse/
-    def fast_iter(self, func, tag, *args, **kwargs):
+    def fast_iter(self, file, process_func, tag, *args, **kwargs):
 
         nsmap = {}
-        context = ET.iterparse('JPK/JPK_KR_20170101_20171231_4d7904ce.xml', events=('end', 'start-ns',))
+        context = ET.iterparse(file.path.url[1::], events=('end', 'start-ns',), tag=self.fixtag('tns', tag, nsmap))
         results = []
 
         for event, elem in context:
@@ -35,152 +36,145 @@ class ConvertXLMView(LoginRequiredMixin, View):
                 ns, url = elem
                 nsmap[ns] = url
             if event == 'end':
-                if elem.tag == self.fixtag('tns', tag, nsmap):
-                    func(elem, results, *args, **kwargs)
-                    elem.clear()
-                    for ancestor in elem.xpath('ancestor-or-self::*'):
-                        while ancestor.getprevious() is not None:
-                            del ancestor.getparent()[0]
+                process_func(elem, results, *args, **kwargs)
+                elem.clear()
+                for ancestor in elem.xpath('ancestor-or-self::*'):
+                    while ancestor.getprevious() is not None:
+                        del ancestor.getparent()[0]
         del context
         return results
 
+
+    # processing xml elements
     def process_elem(self, elem, results, *args, **kwargs):
-        container = {}
+        result = {}
         for child in elem.iterchildren():
-            container[child.tag[child.tag.index('}')+1:]] = child.text
-        results.append(container)
-
-    def get(self, request):
-        # displaying upload form
-        form = LoadedFileForm()
-        ctx = {'form': form}
-
-        dziennik = self.fast_iter(self.process_elem, 'Dziennik')
-        print(dziennik)
-        # for result in dziennik:
-        #     Dziennik.objects.create(**result)
-
-        kontozapis = self.fast_iter(self.process_elem, 'KontoZapis')
-        print(kontozapis)
-        # for result in kontozapis:
-        #     nr_zapisu = result.pop('NrZapisu')
-        #     book_element = Dziennik.objects.get(NrZapisuDziennika=nr_zapisu)
-        #     KontoZapis.objects.create(NrZapisu=book_element, **result)
-
-        return render(request, 'conversion.html', ctx)
-
-    # def post(self, request):
-        # handling uploaded file
-        # user = User.objects.get(pk=request.user.id)
-        # form = LoadedFileForm(request.POST, request.FILES)
-        # if form.is_valid():
-        #     file = LoadedFile.objects.create(user=user, **form.cleaned_data)
-        #
-        #     self.get_data(file, 'SprzedazWiersz', SprzedazWiersz)
-        #     self.get_data(file, 'ZakupWiersz', ZakupWiersz)
-
-        #     return redirect('export', file_id=file.pk)
-        #
-        # ctx = {
-        #     'form': form,
-        # }
-        # return render(request, 'conversion.html', ctx)
+            result[child.tag[child.tag.index('}')+1:]] = child.text
+        results.append(result)
 
 
+    # creating list of exel columns that are not empty
+    def get_headers(self, keys, results):
+        headers = []
+        for el in keys:
+            test_if_empty = len([True for result in results if result(el) == None])
+            if test_if_empty != len(results):
+                headers.append(el)
+        return headers
 
-class ExportToExcel(LoginRequiredMixin, View):
+    # building excel sheet
+    def worksheet_generate(self, headers, sheet, results, bold, date_fields, date, money_fields, money,
+                           num_fields, numbers, strings):
 
-    def get_headers(self, obj_keys, query_set, file_id):
-        # creating list of db columns that are not empty
-        document = LoadedFile.objects.get(pk=file_id)
-        container = []
-        for el in obj_keys:
-            test_if_empty = len([True for obj in query_set.objects.filter(document=document) if getattr(obj, el) == None])
-            if test_if_empty != query_set.objects.filter(document=document).count():
-                container.append(el)
-        return container
-
-    def worksheet_generate(self, headers, sheet, query_set, bold, date_fields, date, money_fields, money, num_fields, numbers, strings, file_id):
-        document = LoadedFile.objects.get(pk=file_id)
-        # building excel sheet
         col = 0
         row = 1
-        for el in headers:
-            if col in range(1, 5):
-                sheet.set_column(col, col, 20)
-            sheet.write(0, col, el, bold)
+        for header in headers:
+            sheet.write(0, col, header, bold)
             col += 1
 
-        for el in query_set.objects.filter(document=document):
+        for result in results:
             col = 0
             for header in headers:
                 if header in date_fields:
-                    sheet.write(row, col, getattr(el, header), date)
+                    sheet.write(row, col, result[header], date)
                 elif header in money_fields:
-                    sheet.write(row, col, getattr(el, header), money)
+                    sheet.write(row, col, result[header], money)
                 elif header in num_fields:
-                    sheet.write(row, col, getattr(el, header), numbers)
+                    sheet.write(row, col, result[header], numbers)
                 else:
-                    sheet.write(row, col, getattr(el, header), strings)
+                    sheet.write(row, col, result[header], strings)
                 col += 1
             row += 1
-
         return sheet
 
-    def get(self, request, file_id):
 
-        document = LoadedFile.objects.get(pk=file_id)
+    # displaying upload form
+    def get(self, request):
 
-        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-        response['Content-Disposition'] = "attachment; filename=jpk_vat.xlsx"
+        form = LoadedFileForm()
+        ctx = {'form': form}
 
-        # basic excel settings
-        workbook = xlsxwriter.Workbook(response, {'in_memory': True})
-        worksheet1 = workbook.add_worksheet()
-        worksheet2 = workbook.add_worksheet()
+        return render(request, 'conversion.html', ctx)
 
-        # excel cell formatting
-        bold = workbook.add_format({'bold': True})
-        date = workbook.add_format({'num_format': 'dd/mm/yy'})
-        money = workbook.add_format({'num_format': '#.00'})
-        numbers = workbook.add_format({'num_format': '0'})
-        strings = workbook.add_format({'num_format': '@'})
 
-        sale_keys = ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta', 'DowodSprzedazy',
-                     'DataWystawienia', 'DataSprzedazy', 'K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17',
-                     'K_18', 'K_19', 'K_20', 'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29',
-                     'K_30', 'K_31', 'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39']
+    # handling uploaded file
+    def post(self, request):
 
-        purchase_keys = ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu', 'DataZakupu', 'DataWplywu',
-                         'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
+        user = User.objects.get(pk=request.user.id)
+        form = LoadedFileForm(request.POST, request.FILES)
 
-        num_fields = ['LpSprzedazy', 'LpZakupu']
-        date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu']
-        money_fields = ['K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20', 'K_21',
-                        'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31', 'K_32', 'K_33',
-                        'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
+        if form.is_valid():
+            file = LoadedFile.objects.create(user=user, **form.cleaned_data)
 
-        sale_headers = self.get_headers(sale_keys, SprzedazWiersz, file_id)
-        purchase_headers = self.get_headers(purchase_keys, ZakupWiersz, file_id)
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.type)
 
-        self.worksheet_generate(sale_headers, worksheet1, SprzedazWiersz, bold, date_fields, date,
-                                money_fields, money, num_fields, numbers, strings, file_id)
-        self.worksheet_generate(purchase_headers, worksheet2, ZakupWiersz, bold, date_fields, date,
-                                money_fields, money, num_fields, numbers, strings, file_id)
 
-        workbook.close()
+            # basic excel settings
+            workbook = xlsxwriter.Workbook(response, {'in_memory': True})
+            #worksheet1 = workbook.add_worksheet()
+            #worksheet2 = workbook.add_worksheet()
 
-        # removing db rows and loaded file
-        for sale in SprzedazWiersz.objects.filter(document=document):
-            sale.delete()
+            # excel cell formatting
+            bold = workbook.add_format({'bold': True})
+            date = workbook.add_format({'num_format': 'dd/mm/yy'})
+            money = workbook.add_format({'num_format': '#.00'})
+            numbers = workbook.add_format({'num_format': '0'})
+            strings = workbook.add_format({'num_format': '@'})
 
-        for purchase in ZakupWiersz.objects.filter(document=document):
-            purchase.delete()
+            # if JPK_VAT do sth, elif JPK_KR do sth else... but how to recognize at this stage what kind of doc I'm dealing with???
 
-        document.delete()
-        os.remove(os.path.join(settings.MEDIA_ROOT, document.name))
+            if file.type == 'VAT':
 
-        return response
+                tags = {
+                    'SprzedazWiersz':
+                            ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta', 'DowodSprzedazy',
+                             'DataWystawienia', 'DataSprzedazy', 'K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16',
+                             'K_17', 'K_18', 'K_19', 'K_20', 'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27',
+                             'K_28', 'K_29', 'K_30', 'K_31', 'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39'],
+                   'ZakupWiersz':
+                           ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu', 'DataZakupu',
+                            'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
+                        }
+
+                num_fields = ['LpSprzedazy', 'LpZakupu']
+                date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu']
+                money_fields = ['K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20',
+                                'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31',
+                                'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45',
+                                'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
+
+                for key, value in tags.items():
+
+                    worksheet = workbook.add_worksheet()
+                    results = self.fast_iter(file, self.process_elem, key)
+                    headers = self.get_headers(value, results)
+                    self.worksheet_generate(headers, worksheet, results, bold, date_fields, date,
+                                            money_fields, money, num_fields, numbers, strings)
+
+            elif file.type == 'KR':
+                tags = ('ZOiS', 'Dziennik', 'KontoZapis')
+
+                # dziennik = self.fast_iter(file, self.process_elem, 'Dziennik')
+                # print(dziennik)
+                #
+                # kontozapis = self.fast_iter(file, self.process_elem, 'KontoZapis')
+                # print(kontozapis)
+
+                pass
+
+            workbook.close()
+
+            # removing loaded file from db and from media folder
+            file.delete()
+            os.remove(os.path.join(settings.MEDIA_ROOT, file.name))
+
+            return response
+
+        form = LoadedFileForm()
+        ctx = {'form': form,}
+        return render(request, 'conversion.html', ctx)
+
 
 
 class Registration(View):

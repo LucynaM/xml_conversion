@@ -7,9 +7,10 @@ from .models import LoadedFile
 class LoadedFileForm(forms.ModelForm):
     class Meta:
         model = LoadedFile
-        fields = ['path', ]
+        fields = ['path', 'type']
         labels = {
-            'path': 'path'
+            'path': 'path',
+            'type': 'type'
         }
 
 
