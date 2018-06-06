@@ -78,11 +78,11 @@ class ConvertXLMView(LoginRequiredMixin, View):
             for header in headers:
                 if header not in result.keys():
                     result[header] = None
-                if header in date_fields:
+                if 'Data' in header:
                     sheet.write(row, col, result[header], date)
-                elif header in money_fields:
+                elif 'K_' in header or 'Kwota' in header or 'Bilans' in header or 'Saldo' in header or 'Obroty' in header:
                     sheet.write(row, col, result[header], money)
-                elif header in num_fields:
+                elif 'Lp' in header:
                     sheet.write(row, col, result[header], numbers)
                 else:
                     sheet.write(row, col, result[header], strings)
@@ -127,7 +127,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
 
 
             if file.get_type_display() == 'VAT':
-
+                ns = '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}'
                 tags = {
                     'SprzedazWiersz':
                             ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta', 'DowodSprzedazy',
@@ -151,10 +151,21 @@ class ConvertXLMView(LoginRequiredMixin, View):
                     results = self.fast_iter(file, self.process_elem, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}' + key)
                     headers = self.get_headers(value, results)
                     self.worksheet_generate(headers, worksheet, results, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
-                    print('działam4')
 
-            elif file.type == 'KR':
-                tags = ('ZOiS', 'Dziennik', 'KontoZapis')
+
+            elif file.get_type_display() == 'KR':
+                ns = '{http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}'
+                tags = {
+                    'ZOiS': ['KodKonta', 'OpisKonta', 'TypKonta', 'KodZespolu', 'OpisZespolu', 'KodKategorii', 'OpisKategorii',
+                             'KodPodkategorii', 'OpisPodkategorii', 'BilansOtwarciaWinien', 'BilansOtwarciaMa',
+                             'ObrotyWinien', 'ObrotyMa', 'ObrotyWinienNarast', 'ObrotyMaNarast', 'SaldoWinien', 'SaldoMa'],
+                    'Dziennik': ['LpZapisuDziennika', 'NrZapisuDziennika', 'OpisDziennika', 'NrDowoduKsiegowego',
+                                 'RodzajDowodu', 'DataOperacji', 'DataDowodu', 'DataKsiegowania', 'KodOperatora',
+                                 'OpisOperacji', 'DziennikKwotaOperacji'],
+                    'KontoZapis': ['LpZapisu', 'NrZapisu', 'KodKontaWinien', 'KwotaWinien', 'KwotaWinienWaluta',
+                                   'KodWalutyWinien', 'OpisZapisuWinien', 'KodKontaMa', 'KwotaMa', 'KwotaMaWaluta',
+                                   'KodWalutyMa', 'OpisZapisuMa']
+                }
 
                 # dziennik = self.fast_iter(file, self.process_elem, 'Dziennik')
                 # print(dziennik)

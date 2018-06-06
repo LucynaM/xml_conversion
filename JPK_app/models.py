@@ -76,6 +76,25 @@ class LoadedFile(models.Model):
     @property
     def name(self):
         return '{}'.format(self.path.name)
+    
+class ZOiS(models.Model):
+    KodKonta = models.CharField(max_length=256)
+    OpisKonta = models.CharField(max_length=256)
+    TypKonta = models.CharField(max_length=256)
+    KodZespolu = models.CharField(max_length=256)
+    OpisZespolu = models.CharField(max_length=256)
+    KodKategorii = models.CharField(max_length=256)
+    OpisKategorii = models.CharField(max_length=256)
+    KodPodkategorii = models.CharField(max_length=256, null=True)
+    OpisPodkategorii = models.CharField(max_length=256, null=True)
+    BilansOtwarciaWinien = models.DecimalField(max_digits=18, decimal_places=2)
+    BilansOtwarciaMa = models.DecimalField(max_digits=18, decimal_places=2)
+    ObrotyWinien = models.DecimalField(max_digits=18, decimal_places=2)
+    ObrotyMa = models.DecimalField(max_digits=18, decimal_places=2)
+    ObrotyWinienNarast = models.DecimalField(max_digits=18, decimal_places=2)
+    ObrotyMaNarast = models.DecimalField(max_digits=18, decimal_places=2)
+    SaldoWinien = models.DecimalField(max_digits=18, decimal_places=2)
+    SaldoMa = models.DecimalField(max_digits=18, decimal_places=2)
 
 class Dziennik(models.Model):
     LpZapisuDziennika = models.IntegerField()
