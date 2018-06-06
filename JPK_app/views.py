@@ -28,7 +28,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
     def fast_iter(self, file, process_func, tag, *args, **kwargs):
 
         nsmap = {}
-        context = ET.iterparse(file.path.url[1::], events=('end', 'start-ns',), tag=self.fixtag('tns', tag, nsmap))
+        context = ET.iterparse(file.path.url[1::], events=('end', 'start-ns',), tag=tag)
         results = []
 
         for event, elem in context:
@@ -57,7 +57,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
     def get_headers(self, keys, results):
         headers = []
         for el in keys:
-            test_if_empty = len([True for result in results if result(el) == None])
+            test_if_empty = len([True for result in results if el not in result.keys()])
             if test_if_empty != len(results):
                 headers.append(el)
         return headers
@@ -65,6 +65,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
     # building excel sheet
     def worksheet_generate(self, headers, sheet, results, bold, date_fields, date, money_fields, money,
                            num_fields, numbers, strings):
+
 
         col = 0
         row = 1
@@ -75,6 +76,8 @@ class ConvertXLMView(LoginRequiredMixin, View):
         for result in results:
             col = 0
             for header in headers:
+                if header not in result.keys():
+                    result[header] = None
                 if header in date_fields:
                     sheet.write(row, col, result[header], date)
                 elif header in money_fields:
@@ -107,7 +110,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
             file = LoadedFile.objects.create(user=user, **form.cleaned_data)
 
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.type)
+            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.get_type_display())
 
 
             # basic excel settings
@@ -122,9 +125,8 @@ class ConvertXLMView(LoginRequiredMixin, View):
             numbers = workbook.add_format({'num_format': '0'})
             strings = workbook.add_format({'num_format': '@'})
 
-            # if JPK_VAT do sth, elif JPK_KR do sth else... but how to recognize at this stage what kind of doc I'm dealing with???
 
-            if file.type == 'VAT':
+            if file.get_type_display() == 'VAT':
 
                 tags = {
                     'SprzedazWiersz':
@@ -134,7 +136,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
                              'K_28', 'K_29', 'K_30', 'K_31', 'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39'],
                    'ZakupWiersz':
                            ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu', 'DataZakupu',
-                            'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
+                            'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50'],
                         }
 
                 num_fields = ['LpSprzedazy', 'LpZakupu']
@@ -145,12 +147,11 @@ class ConvertXLMView(LoginRequiredMixin, View):
                                 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
 
                 for key, value in tags.items():
-
                     worksheet = workbook.add_worksheet()
-                    results = self.fast_iter(file, self.process_elem, key)
+                    results = self.fast_iter(file, self.process_elem, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}' + key)
                     headers = self.get_headers(value, results)
-                    self.worksheet_generate(headers, worksheet, results, bold, date_fields, date,
-                                            money_fields, money, num_fields, numbers, strings)
+                    self.worksheet_generate(headers, worksheet, results, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
+                    print('działam4')
 
             elif file.type == 'KR':
                 tags = ('ZOiS', 'Dziennik', 'KontoZapis')
