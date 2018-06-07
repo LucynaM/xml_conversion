@@ -63,9 +63,7 @@ class ConvertXLMView(LoginRequiredMixin, View):
         return headers
 
     # building excel sheet
-    def worksheet_generate(self, headers, sheet, results, bold, date_fields, date, money_fields, money,
-                           num_fields, numbers, strings):
-
+    def worksheet_generate(self, headers, sheet, results, bold, date, money, numbers, strings):
 
         col = 0
         row = 1
@@ -89,6 +87,13 @@ class ConvertXLMView(LoginRequiredMixin, View):
                 col += 1
             row += 1
         return sheet
+
+    def worksheets_generate(self, tags, workbook, file, ns, func,  *args, **kwargs):
+        for key, value in tags.items():
+            worksheet = workbook.add_worksheet()
+            results = self.fast_iter(file, self.process_elem, ns + key)
+            headers = self.get_headers(value, results)
+            func(headers, worksheet, results, *args, **kwargs)
 
 
     # displaying upload form
@@ -115,8 +120,6 @@ class ConvertXLMView(LoginRequiredMixin, View):
 
             # basic excel settings
             workbook = xlsxwriter.Workbook(response, {'in_memory': True})
-            #worksheet1 = workbook.add_worksheet()
-            #worksheet2 = workbook.add_worksheet()
 
             # excel cell formatting
             bold = workbook.add_format({'bold': True})
@@ -139,18 +142,8 @@ class ConvertXLMView(LoginRequiredMixin, View):
                             'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50'],
                         }
 
-                num_fields = ['LpSprzedazy', 'LpZakupu']
-                date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu']
-                money_fields = ['K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20',
-                                'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31',
-                                'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45',
-                                'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
-
-                for key, value in tags.items():
-                    worksheet = workbook.add_worksheet()
-                    results = self.fast_iter(file, self.process_elem, '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}' + key)
-                    headers = self.get_headers(value, results)
-                    self.worksheet_generate(headers, worksheet, results, bold, date_fields, date, money_fields, money, num_fields, numbers, strings)
+                self.worksheets_generate(tags, workbook, file, ns, self.worksheet_generate, bold, date, money, numbers,
+                                         strings)
 
 
             elif file.get_type_display() == 'KR':
@@ -167,13 +160,8 @@ class ConvertXLMView(LoginRequiredMixin, View):
                                    'KodWalutyMa', 'OpisZapisuMa']
                 }
 
-                # dziennik = self.fast_iter(file, self.process_elem, 'Dziennik')
-                # print(dziennik)
-                #
-                # kontozapis = self.fast_iter(file, self.process_elem, 'KontoZapis')
-                # print(kontozapis)
-
-                pass
+                self.worksheets_generate(tags, workbook, file, ns, self.worksheet_generate, bold, date, money, numbers,
+                                         strings)
 
             workbook.close()
 
