@@ -82,6 +82,7 @@ class ConvertXLMView(View):
 
         for result in results:
             debit_elements = {
+                    'LpZapisu': result['LpZapisu'],
                     'NrZapisu': result['NrZapisu'],
                     'KodKonta': result['KodKontaWinien'],
                     'KwotaWinien': result['KwotaWinien'],
@@ -89,6 +90,7 @@ class ConvertXLMView(View):
                     'OpisZapisuMa': None,
                 }
             credit_elements = {
+                    'LpZapisu': result['LpZapisu'],
                     'NrZapisu': result['NrZapisu'],
                     'KodKonta': result['KodKontaMa'],
                     'KwotaWinien': None,
@@ -125,13 +127,16 @@ class ConvertXLMView(View):
         row = 1
         for header in headers:
             sheet.write(0, col, header, bold)
+            if 'K_' in header:
+                sheet.set_column(col, col, 10)
+            else:
+                sheet.set_column(col, col, len(header))
             col += 1
 
         for result in results:
             col = 0
             for header in headers:
-                # if header not in result.keys():
-                #     result[header] = None
+
                 if header in result.keys() and result[header] != None:
                     if 'Data' in header:
                         sheet.write(row, col, datetime.strptime(result[header], '%Y-%m-%d'), date)
