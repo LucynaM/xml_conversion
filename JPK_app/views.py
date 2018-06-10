@@ -67,7 +67,7 @@ class ConvertXLMView(View):
                 headers.append(el)
         return headers
 
-
+    # change parsing result in order to get KodKonta instead of KodKontaWinien/KodKontaMa with values in a single row -generic
     def change_data_generic(self, result, required_elements, optional_elements):
         new_result = required_elements
         for el in optional_elements:
@@ -75,8 +75,7 @@ class ConvertXLMView(View):
                 new_result[el] = result[el]
         return new_result
 
-
-    # change parsing result in order to get KodKonta instead of KodKontaWinien/KodKontaMa with values in a single row
+    # change parsing result in order to get KodKonta instead of KodKontaWinien/KodKontaMa with values in a single row - application
     def change_data(self, results):
         new_results = []
 
@@ -140,10 +139,10 @@ class ConvertXLMView(View):
                 if header in result.keys() and result[header] != None:
                     if 'Data' in header:
                         sheet.write(row, col, datetime.strptime(result[header], '%Y-%m-%d'), date)
-                    elif 'K_' in header or 'Kwota' in header or 'Bilans' in header or 'Saldo' in header or 'Obroty' in header:
+                    elif 'K_' in header or 'Kwota' in header or 'Bilans' in header or 'Saldo' in header or 'Obroty' in header\
+                            or 'Wartosc' in header or 'Cena' in header:
                         sheet.write(row, col, float(result[header]), money)
                     elif 'Lp' in header:
-                        # sheet.write(row, col, result[header], numbers)
                         sheet.write(row, col, row, numbers)
                     else:
                         sheet.write(row, col, result[header], strings)
@@ -151,6 +150,7 @@ class ConvertXLMView(View):
                     sheet.write(row, col, None)
                 col += 1
             row += 1
+
         return sheet
 
     # building excel worksheet
@@ -206,6 +206,7 @@ class ConvertXLMView(View):
 
             ns = self.get_ns(file)
 
+            # tags for JPK_VAT
             if ns == '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}':
                 tags = {
                     'SprzedazWiersz': ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta',
@@ -217,7 +218,7 @@ class ConvertXLMView(View):
                                    'DataZakupu', 'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50'],
                         }
 
-
+            # tags for JPK_KR
             elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}':
                 tags = {
                     'ZOiS': ['KodKonta', 'OpisKonta', 'TypKonta', 'KodZespolu', 'OpisZespolu', 'KodKategorii', 'OpisKategorii',
@@ -233,6 +234,38 @@ class ConvertXLMView(View):
                                               'KodWalutyWinien', 'OpisZapisuWinien', 'KwotaMa', 'KwotaMaWaluta',
                                               'KodWalutyMa', 'OpisZapisuMa'],
                 }
+
+            # tags for JPK_MAG
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03093/}':
+                tags = {
+                    'PZWartosc': ['NumerPZ', 'DataPZ', 'WartoscPZ', 'DataOtrzymaniaPZ', 'Dostawca', 'NumerFaPZ', 'DataFaPZ'],
+                    'PZWiersz': ['Numer2PZ', 'KodTowaruPZ', 'NazwaTowaruPZ', 'IloscPrzyjetaPZ', 'JednostkaMiaryPZ',
+                                 'CenaJednPZ', 'WartoscPozycjiPZ'],
+                    'WZWartosc': ['NumerWZ', 'DataWZ', 'WartoscWZ', 'DataWydaniaWZ', 'OdbiorcaWZ', 'NumerFaWZ', 'DataFaWZ'],
+                    'WZWiersz': ['Numer2WZ', 'KodTowaruWZ', 'NazwaTowaruWZ', 'IloscWydanaWZ', 'JednostkaMiaryWZ',
+                                 'CenaJednWZ', 'WartoscPozycjiWZ'],
+                    'RWWartosc': ['NumerRW', 'DataRW', 'WartoscRW', 'DataWydaniaRW', 'SkadRW', 'DokadRW'],
+                    'RWWiersz': ['Numer2RW', 'KodTowaruRW', 'NazwaTowaruRW', 'IloscWydanaRW', 'JednostkaMiaryRW',
+                                 'CenaJednRW', 'WartoscPozycjiRW'],
+                    'MMWartosc': ['NumerMM', 'DataMM', 'WartoscMM', 'DataWydaniaMM', 'SkadMM', 'DokadMM'],
+                    'MMWiersz': ['Numer2MM', 'KodTowaruMM', 'NazwaTowaruMM', 'IloscWydanaMM', 'JednostkaMiaryMM', 'CenaJednMM',
+                                 'WartoscPozycjiMM'],
+                }
+
+            # tags for JPK_WB
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03092/}':
+                tags = {
+                    'Salda': ['SaldoPoczatkowe', 'SaldoKoncowe'],
+                    'WyciagWiersz': ['NumerWiersza', 'DataOperacji', 'NazwaPodmiotu', 'OpisOperacji', 'KwotaOperacji',
+                                     'SaldoOperacji']
+                }
+
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03095/}':
+                tags = {
+
+                }
+
+
 
             self.worksheets_generate(tags, workbook, file, self.fill_sheet, ns, bold, date, money, numbers, strings)
 
