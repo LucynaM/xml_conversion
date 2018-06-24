@@ -204,6 +204,24 @@ class ConvertXLMView(View):
             numbers = workbook.add_format({'num_format': '0'})
             strings = workbook.add_format({'num_format': '@'})
 
+            date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu', 'DataOperacji', 'DataDowodu',
+                           'DataKsiegowania', 'DataPZ', 'DataOtrzymaniaPZ', 'DataFaPZ', 'DataWZ', 'DataWydaniaWZ', 'DataFaWZ',
+                           'DataRW', 'DataWydaniaRW', 'DataMM', 'DataWydaniaMM', 'DataOperacji', 'P_1', 'P_6', 'P_22A']
+
+            money_fields = ['K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20',
+                            'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31',
+                            'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45',
+                            'K_46', 'K_47', 'K_48', 'K_49', 'K_50', 'BilansOtwarciaWinien', 'BilansOtwarciaMa',
+                            'ObrotyWinien', 'ObrotyMa', 'ObrotyWinienNarast', 'ObrotyMaNarast', 'SaldoWinien',
+                            'SaldoMa', 'DziennikKwotaOperacji', 'KwotaWinien', 'KwotaMa', 'WartoscPZ', 'CenaJednPZ',
+                            'WartoscPozycjiPZ', 'WartoscWZ', 'CenaJednWZ', 'WartoscPozycjiWZ', 'WartoscRW', 'CenaJednRW',
+                            'WartoscPozycjiRW', 'WartoscMM', 'CenaJednMM', 'WartoscPozycjiMM', 'SaldoPoczatkowe',
+                            'SaldoKoncowe', 'KwotaOperacji', 'SaldoOperacji', 'P_13_1', 'P_14_1', 'P_13_2', 'P_14_2',
+                            'P_13_3', 'P_14_3', 'P_13_4', 'P_14_4', 'P_13_5', 'P_14_5', 'P_13_6', 'P_13_7', 'P_15', ]
+
+            quantity_fileds = ['IloscPrzyjetaPZ', 'IloscWydanaWZ', 'IloscWydanaRW', 'IloscWydanaMM', ]
+
+
             ns = self.get_ns(file)
 
             # tags for JPK_VAT
@@ -214,8 +232,8 @@ class ConvertXLMView(View):
                                        'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20', 'K_21', 'K_22',
                                        'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31', 'K_32',
                                        'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39'],
-                   'ZakupWiersz': ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu',
-                                   'DataZakupu', 'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50'],
+                    'ZakupWiersz': ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu',
+                                    'DataZakupu', 'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50'],
                         }
 
             # tags for JPK_KR
@@ -248,8 +266,8 @@ class ConvertXLMView(View):
                     'RWWiersz': ['Numer2RW', 'KodTowaruRW', 'NazwaTowaruRW', 'IloscWydanaRW', 'JednostkaMiaryRW',
                                  'CenaJednRW', 'WartoscPozycjiRW'],
                     'MMWartosc': ['NumerMM', 'DataMM', 'WartoscMM', 'DataWydaniaMM', 'SkadMM', 'DokadMM'],
-                    'MMWiersz': ['Numer2MM', 'KodTowaruMM', 'NazwaTowaruMM', 'IloscWydanaMM', 'JednostkaMiaryMM', 'CenaJednMM',
-                                 'WartoscPozycjiMM'],
+                    'MMWiersz': ['Numer2MM', 'KodTowaruMM', 'NazwaTowaruMM', 'IloscWydanaMM', 'JednostkaMiaryMM',
+                                 'CenaJednMM', 'WartoscPozycjiMM'],
                 }
 
             # tags for JPK_WB
@@ -260,8 +278,14 @@ class ConvertXLMView(View):
                                      'SaldoOperacji']
                 }
 
+            # tags for JPK_FA
             elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03095/}':
                 tags = {
+                    'Faktura': ['P_1', 'P_2A', 'P_3A', 'P_3B', 'P_3C', 'P_3D', 'P_4A', 'P_4B', 'P_5A', 'P_5B', 'P_6',
+                                'P_13_1', 'P_14_1', 'P_13_2', 'P_14_2', 'P_13_3', 'P_14_3', 'P_13_4', 'P_14_4', 'P_13_5',
+                                'P_14_5', 'P_13_6', 'P_13_7', 'P_15', 'P_16', 'P_17', 'P_18', 'P_19', 'P_19A', 'P_19B',
+                                'P_19C', 'P_20', 'P_20A', 'P_20B', 'P_21', 'P_21A', 'P_21B', 'P_21C', 'P_22A', 'P_22B',
+                                'P_22C', 'P_23', 'P_106E_2', 'P_106E_3', 'P_106E_3A']
 
                 }
 
