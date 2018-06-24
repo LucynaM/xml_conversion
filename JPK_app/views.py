@@ -1,208 +1,306 @@
 import os
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseBadRequest, HttpResponse, Http404
-from django.contrib.auth.models import User
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import SprzedazWiersz, ZakupWiersz, LoadedFile
-from .forms import LoadedFileForm, RegistrationForm, LogInForm
-from django.contrib.auth import login, logout, authenticate
+from .models import LoadedFile
+from .forms import LoadedFileForm
 from django.conf import settings
 
-import xml.etree.ElementTree as etree
+from datetime import datetime
+
 import xlsxwriter
+import lxml.etree as ET
+
 
 
 # Create your views here.
 
+class ConvertXLMView(View):
 
-class ConvertToDBView(LoginRequiredMixin, View):
+    # iterating through xml structure Based on Liza Daly's fast_iter
+    # http://www.ibm.com/developerworks/xml/library/x-hiperfparse/
+    def fast_iter(self, file, process_func, tag, *args, **kwargs):
 
-    def get_data(self, file, search_param, model):
-        # extraction of data from xml file and conversion to db rows
-        tree = etree.parse(file.path.url[1::])
-        root = tree.getroot()
-        template_name = root.tag[:root.tag.index('JPK')]
-        container = {}
-        for row in root.findall(template_name + search_param):
-            for element in row:
-                container[element.tag[element.tag.index('}')+1:]] = element.text
-            model.objects.create(document=file, **container)
-            container.clear()
-            
+        context = ET.iterparse(file.path.url[1::], events=('end',), tag=tag)
+        results = []
 
-    def get(self, request):
-        # displaying upload form
-        form = LoadedFileForm()
-        ctx = {'form': form}
-        return render(request, 'conversion.html', ctx)
-
-    def post(self, request):
-        # handling uploaded file
-        user = User.objects.get(pk=request.user.id)
-        form = LoadedFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = LoadedFile.objects.create(user=user, **form.cleaned_data)
-
-            self.get_data(file, 'SprzedazWiersz', SprzedazWiersz)
-            self.get_data(file, 'ZakupWiersz', ZakupWiersz)
-
-            # {http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}KontoZapis
-            # {http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}Dziennik
-
-            return redirect('export', file_id=file.pk)
-
-        ctx = {
-            'form': form,
-        }
-        return render(request, 'conversion.html', ctx)
+        for event, elem in context:
+            process_func(elem, results)
+            elem.clear()
+            for ancestor in elem.xpath('ancestor-or-self::*'):
+                while ancestor.getprevious() is not None:
+                    del ancestor.getparent()[0]
+        del context
+        return results
 
 
-class ExportToExcel(LoginRequiredMixin, View):
+    # getting type of file (VAT, KR...) by reading the beginning of xml file in search of namespace tag
+    def get_ns(self, file):
 
-    def get_headers(self, obj_keys, query_set, file_id):
-        # creating list of db columns that are not empty
-        document = LoadedFile.objects.get(pk=file_id)
-        container = []
-        for el in obj_keys:
-            test_if_empty = len([True for obj in query_set.objects.filter(document=document) if getattr(obj, el) == None])
-            if test_if_empty != query_set.objects.filter(document=document).count():
-                container.append(el)
-        return container
+        ns = ""
 
-    def worksheet_generate(self, headers, sheet, query_set, bold, date_fields, date, money_fields, money, num_fields, numbers, strings, file_id):
-        document = LoadedFile.objects.get(pk=file_id)
-        # building excel sheet
+        with open(file.path.url[1::], 'r') as f:
+            start = f.read(200)
+            if 'http://jpk.mf.gov.pl/wzor/2016/10/26/10261/' in start:
+                ns = '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}'
+            elif 'http://jpk.mf.gov.pl/wzor/2016/03/09/03091/' in start:
+                ns = '{http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}'
+
+        f.close()
+        return ns
+
+
+    # processing xml elements to arrange them in key-value pairs (dictionary)
+    def process_elem(self, elem, results):
+        result = {}
+        for child in elem.iterchildren():
+            result[child.tag[child.tag.index('}')+1:]] = child.text
+        results.append(result)
+
+
+    # creating list of exel columns that are not empty
+    def get_headers(self, keys, results):
+        headers = []
+        for el in keys:
+            test_if_empty = len([True for result in results if el not in result.keys()])
+            if test_if_empty != len(results):
+                headers.append(el)
+        return headers
+
+    # change parsing result in order to get KodKonta instead of KodKontaWinien/KodKontaMa with values in a single row -generic
+    def change_data_generic(self, result, required_elements, optional_elements):
+        new_result = required_elements
+        for el in optional_elements:
+            if el in result.keys():
+                new_result[el] = result[el]
+        return new_result
+
+    # change parsing result in order to get KodKonta instead of KodKontaWinien/KodKontaMa with values in a single row - application
+    def change_data(self, results):
+        new_results = []
+
+        for result in results:
+            debit_elements = {
+                    'LpZapisu': result['LpZapisu'],
+                    'NrZapisu': result['NrZapisu'],
+                    'KodKonta': result['KodKontaWinien'],
+                    'KwotaWinien': result['KwotaWinien'],
+                    'KwotaMa': None,
+                    'OpisZapisuMa': None,
+                }
+            credit_elements = {
+                    'LpZapisu': result['LpZapisu'],
+                    'NrZapisu': result['NrZapisu'],
+                    'KodKonta': result['KodKontaMa'],
+                    'KwotaWinien': None,
+                    'OpisZapisuWinien': None,
+                    'KwotaMa': result['KwotaMa'],
+                }
+            debit_optional_elements = ['KwotaWinienWaluta', 'KodWalutyWinien', 'OpisZapisuWinien']
+            credit_optional_elements = ['KwotaMaWaluta', 'KodWalutyMa', 'OpisZapisuMa']
+
+            if result['KodKontaWinien'] not in [None, '-'] and result['KodKontaMa'] not in [None, '-']:
+
+                new_result = self.change_data_generic(result, debit_elements, debit_optional_elements)
+                new_results.append(new_result)
+
+                new_result = self.change_data_generic(result, credit_elements, credit_optional_elements)
+                new_results.append(new_result)
+
+            elif result['KodKontaWinien'] not in [None, '-']:
+
+                new_result = self.change_data_generic(result, debit_elements, debit_optional_elements)
+                new_results.append(new_result)
+
+            elif result['KodKontaMa'] not in [None, '-']:
+
+                new_result = self.change_data_generic(result, credit_elements, credit_optional_elements)
+                new_results.append(new_result)
+
+        return new_results
+
+    # filling excel sheet with xml parsed data
+    def fill_sheet(self, headers, sheet, results, bold, date, money, numbers, strings):
+
         col = 0
         row = 1
-        for el in headers:
-            if col in range(1, 5):
-                sheet.set_column(col, col, 20)
-            sheet.write(0, col, el, bold)
+        for header in headers:
+            sheet.write(0, col, header, bold)
+            if 'K_' in header:
+                sheet.set_column(col, col, 10)
+            else:
+                sheet.set_column(col, col, len(header))
             col += 1
 
-        for el in query_set.objects.filter(document=document):
+        for result in results:
             col = 0
             for header in headers:
-                if header in date_fields:
-                    sheet.write(row, col, getattr(el, header), date)
-                elif header in money_fields:
-                    sheet.write(row, col, getattr(el, header), money)
-                elif header in num_fields:
-                    sheet.write(row, col, getattr(el, header), numbers)
+
+                if header in result.keys() and result[header] != None:
+                    if 'Data' in header:
+                        sheet.write(row, col, datetime.strptime(result[header], '%Y-%m-%d'), date)
+                    elif 'K_' in header or 'Kwota' in header or 'Bilans' in header or 'Saldo' in header or 'Obroty' in header\
+                            or 'Wartosc' in header or 'Cena' in header:
+                        sheet.write(row, col, float(result[header]), money)
+                    elif 'Lp' in header:
+                        sheet.write(row, col, row, numbers)
+                    else:
+                        sheet.write(row, col, result[header], strings)
                 else:
-                    sheet.write(row, col, getattr(el, header), strings)
+                    sheet.write(row, col, None)
                 col += 1
             row += 1
 
         return sheet
 
-    def get(self, request, file_id):
+    # building excel worksheet
+    def worksheets_generate(self, tags, workbook, file, func, ns, *args, **kwargs):
+        for key, value in tags.items():
 
-        document = LoadedFile.objects.get(pk=file_id)
+            worksheet = workbook.add_worksheet(name=key)
 
-        response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-        response['Content-Disposition'] = "attachment; filename=jpk_vat.xlsx"
+            if key == 'KontoZapisRestructured':
+                results = self.fast_iter(file, self.process_elem, ns + 'KontoZapis')
+                headers = self.get_headers(value, results)
+                headers.insert(2, 'KodKonta')
+                results = self.change_data(results)
 
-        # basic excel settings
-        workbook = xlsxwriter.Workbook(response, {'in_memory': True})
-        worksheet1 = workbook.add_worksheet()
-        worksheet2 = workbook.add_worksheet()
-
-        # excel cell formatting
-        bold = workbook.add_format({'bold': True})
-        date = workbook.add_format({'num_format': 'dd/mm/yy'})
-        money = workbook.add_format({'num_format': '#.00'})
-        numbers = workbook.add_format({'num_format': '0'})
-        strings = workbook.add_format({'num_format': '@'})
-
-        sale_keys = ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta', 'DowodSprzedazy',
-                     'DataWystawienia', 'DataSprzedazy', 'K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17',
-                     'K_18', 'K_19', 'K_20', 'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29',
-                     'K_30', 'K_31', 'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39']
-
-        purchase_keys = ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu', 'DataZakupu', 'DataWplywu',
-                         'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
-
-        num_fields = ['LpSprzedazy', 'LpZakupu']
-        date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu']
-        money_fields = ['K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20', 'K_21',
-                        'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31', 'K_32', 'K_33',
-                        'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50']
-
-        sale_headers = self.get_headers(sale_keys, SprzedazWiersz, file_id)
-        purchase_headers = self.get_headers(purchase_keys, ZakupWiersz, file_id)
-
-        self.worksheet_generate(sale_headers, worksheet1, SprzedazWiersz, bold, date_fields, date,
-                                money_fields, money, num_fields, numbers, strings, file_id)
-        self.worksheet_generate(purchase_headers, worksheet2, ZakupWiersz, bold, date_fields, date,
-                                money_fields, money, num_fields, numbers, strings, file_id)
-
-        workbook.close()
-
-        # removing db rows and loaded file
-        for sale in SprzedazWiersz.objects.filter(document=document):
-            sale.delete()
-
-        for purchase in ZakupWiersz.objects.filter(document=document):
-            purchase.delete()
-
-        document.delete()
-        os.remove(os.path.join(settings.MEDIA_ROOT, document.name))
-
-        return response
-
-
-class Registration(View):
-    """Registration page"""
-    def get(self, request):
-        form = RegistrationForm()
-        ctx = {
-            'form': form
-        }
-        return render(request, 'registration.html', ctx)
-
-    def post(self, request):
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.cleaned_data.pop('password2')
-            user = User.objects.create_user(username=form.cleaned_data['email'], **form.cleaned_data)
-            login(request, user)
-            return redirect('conversion_db')
-        ctx = {
-            'form': form,
-        }
-        return render(request, 'registration.html', ctx)
-
-
-class LogInView(View):
-    def get(self, request):
-        form = LogInForm()
-        ctx = {
-            'form': form,
-        }
-        return render(request, 'login.html', ctx)
-
-    def post(self, request):
-        form = LogInForm(request.POST)
-        msg = ""
-        if form.is_valid():
-            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
-            if user is not None:
-                login(request, user)
-                if request.GET.get('next'):
-                    return redirect(request.GET.get('next'))
-                else:
-                    return redirect('conversion_db')
             else:
-                msg = "Błędny użytkownik lub hasło"
-        ctx = {
-            'msg': msg,
-            'form': form,
-        }
-        return render(request, 'login.html', ctx)
+                results = self.fast_iter(file, self.process_elem, ns + key)
+                headers = self.get_headers(value, results)
+
+            func(headers, worksheet, results, *args, **kwargs)
 
 
-def logout_user(request):
-    logout(request)
-    return redirect('login')
+    # displaying upload form
+    def get(self, request):
+
+        form = LoadedFileForm()
+        ctx = {'form': form}
+
+        return render(request, 'conversion.html', ctx)
+
+
+    # handling uploaded file
+    def post(self, request):
+
+        form = LoadedFileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            file = LoadedFile.objects.create(**form.cleaned_data)
+
+
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.name[6:-4:])
+
+
+            # basic excel settings
+            workbook = xlsxwriter.Workbook(response, {'in_memory': True})
+
+            # excel cell formatting
+            bold = workbook.add_format({'bold': True})
+            date = workbook.add_format({'num_format': 'dd/mm/yy'})
+            money = workbook.add_format({'num_format': '#,##0.00'})
+            numbers = workbook.add_format({'num_format': '0'})
+            strings = workbook.add_format({'num_format': '@'})
+
+            date_fields = ['DataWystawienia', 'DataSprzedazy', 'DataZakupu', 'DataWplywu', 'DataOperacji', 'DataDowodu',
+                           'DataKsiegowania', 'DataPZ', 'DataOtrzymaniaPZ', 'DataFaPZ', 'DataWZ', 'DataWydaniaWZ', 'DataFaWZ',
+                           'DataRW', 'DataWydaniaRW', 'DataMM', 'DataWydaniaMM', 'DataOperacji', 'P_1', 'P_6', 'P_22A']
+
+            money_fields = ['K_10', 'K_11', 'K_12', 'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20',
+                            'K_21', 'K_22', 'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31',
+                            'K_32', 'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39', 'K_43', 'K_44', 'K_45',
+                            'K_46', 'K_47', 'K_48', 'K_49', 'K_50', 'BilansOtwarciaWinien', 'BilansOtwarciaMa',
+                            'ObrotyWinien', 'ObrotyMa', 'ObrotyWinienNarast', 'ObrotyMaNarast', 'SaldoWinien',
+                            'SaldoMa', 'DziennikKwotaOperacji', 'KwotaWinien', 'KwotaMa', 'WartoscPZ', 'CenaJednPZ',
+                            'WartoscPozycjiPZ', 'WartoscWZ', 'CenaJednWZ', 'WartoscPozycjiWZ', 'WartoscRW', 'CenaJednRW',
+                            'WartoscPozycjiRW', 'WartoscMM', 'CenaJednMM', 'WartoscPozycjiMM', 'SaldoPoczatkowe',
+                            'SaldoKoncowe', 'KwotaOperacji', 'SaldoOperacji', 'P_13_1', 'P_14_1', 'P_13_2', 'P_14_2',
+                            'P_13_3', 'P_14_3', 'P_13_4', 'P_14_4', 'P_13_5', 'P_14_5', 'P_13_6', 'P_13_7', 'P_15', ]
+
+            quantity_fileds = ['IloscPrzyjetaPZ', 'IloscWydanaWZ', 'IloscWydanaRW', 'IloscWydanaMM', ]
+
+
+            ns = self.get_ns(file)
+
+            # tags for JPK_VAT
+            if ns == '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}':
+                tags = {
+                    'SprzedazWiersz': ['LpSprzedazy', 'NrKontrahenta', 'NazwaKontrahenta', 'AdresKontrahenta',
+                                       'DowodSprzedazy', 'DataWystawienia', 'DataSprzedazy', 'K_10', 'K_11', 'K_12',
+                                       'K_13', 'K_14', 'K_15', 'K_16', 'K_17', 'K_18', 'K_19', 'K_20', 'K_21', 'K_22',
+                                       'K_23', 'K_24', 'K_25', 'K_26', 'K_27', 'K_28', 'K_29', 'K_30', 'K_31', 'K_32',
+                                       'K_33', 'K_34', 'K_35', 'K_36', 'K_37', 'K_38', 'K_39'],
+                    'ZakupWiersz': ['LpZakupu', 'NrDostawcy', 'NazwaDostawcy', 'AdresDostawcy', 'DowodZakupu',
+                                    'DataZakupu', 'DataWplywu', 'K_43', 'K_44', 'K_45', 'K_46', 'K_47', 'K_48', 'K_49', 'K_50'],
+                        }
+
+            # tags for JPK_KR
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03091/}':
+                tags = {
+                    'ZOiS': ['KodKonta', 'OpisKonta', 'TypKonta', 'KodZespolu', 'OpisZespolu', 'KodKategorii', 'OpisKategorii',
+                             'KodPodkategorii', 'OpisPodkategorii', 'BilansOtwarciaWinien', 'BilansOtwarciaMa',
+                             'ObrotyWinien', 'ObrotyMa', 'ObrotyWinienNarast', 'ObrotyMaNarast', 'SaldoWinien', 'SaldoMa'],
+                    'Dziennik': ['LpZapisuDziennika', 'NrZapisuDziennika', 'OpisDziennika', 'NrDowoduKsiegowego',
+                                 'RodzajDowodu', 'DataOperacji', 'DataDowodu', 'DataKsiegowania', 'KodOperatora',
+                                 'OpisOperacji', 'DziennikKwotaOperacji'],
+                    'KontoZapis': ['LpZapisu', 'NrZapisu', 'KodKontaWinien', 'KwotaWinien', 'KwotaWinienWaluta',
+                                   'KodWalutyWinien', 'OpisZapisuWinien', 'KodKontaMa', 'KwotaMa', 'KwotaMaWaluta',
+                                   'KodWalutyMa', 'OpisZapisuMa'],
+                    'KontoZapisRestructured': ['LpZapisu', 'NrZapisu', 'KwotaWinien', 'KwotaWinienWaluta',
+                                              'KodWalutyWinien', 'OpisZapisuWinien', 'KwotaMa', 'KwotaMaWaluta',
+                                              'KodWalutyMa', 'OpisZapisuMa'],
+                }
+
+            # tags for JPK_MAG
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03093/}':
+                tags = {
+                    'PZWartosc': ['NumerPZ', 'DataPZ', 'WartoscPZ', 'DataOtrzymaniaPZ', 'Dostawca', 'NumerFaPZ', 'DataFaPZ'],
+                    'PZWiersz': ['Numer2PZ', 'KodTowaruPZ', 'NazwaTowaruPZ', 'IloscPrzyjetaPZ', 'JednostkaMiaryPZ',
+                                 'CenaJednPZ', 'WartoscPozycjiPZ'],
+                    'WZWartosc': ['NumerWZ', 'DataWZ', 'WartoscWZ', 'DataWydaniaWZ', 'OdbiorcaWZ', 'NumerFaWZ', 'DataFaWZ'],
+                    'WZWiersz': ['Numer2WZ', 'KodTowaruWZ', 'NazwaTowaruWZ', 'IloscWydanaWZ', 'JednostkaMiaryWZ',
+                                 'CenaJednWZ', 'WartoscPozycjiWZ'],
+                    'RWWartosc': ['NumerRW', 'DataRW', 'WartoscRW', 'DataWydaniaRW', 'SkadRW', 'DokadRW'],
+                    'RWWiersz': ['Numer2RW', 'KodTowaruRW', 'NazwaTowaruRW', 'IloscWydanaRW', 'JednostkaMiaryRW',
+                                 'CenaJednRW', 'WartoscPozycjiRW'],
+                    'MMWartosc': ['NumerMM', 'DataMM', 'WartoscMM', 'DataWydaniaMM', 'SkadMM', 'DokadMM'],
+                    'MMWiersz': ['Numer2MM', 'KodTowaruMM', 'NazwaTowaruMM', 'IloscWydanaMM', 'JednostkaMiaryMM',
+                                 'CenaJednMM', 'WartoscPozycjiMM'],
+                }
+
+            # tags for JPK_WB
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03092/}':
+                tags = {
+                    'Salda': ['SaldoPoczatkowe', 'SaldoKoncowe'],
+                    'WyciagWiersz': ['NumerWiersza', 'DataOperacji', 'NazwaPodmiotu', 'OpisOperacji', 'KwotaOperacji',
+                                     'SaldoOperacji']
+                }
+
+            # tags for JPK_FA
+            elif ns == '{http://jpk.mf.gov.pl/wzor/2016/03/09/03095/}':
+                tags = {
+                    'Faktura': ['P_1', 'P_2A', 'P_3A', 'P_3B', 'P_3C', 'P_3D', 'P_4A', 'P_4B', 'P_5A', 'P_5B', 'P_6',
+                                'P_13_1', 'P_14_1', 'P_13_2', 'P_14_2', 'P_13_3', 'P_14_3', 'P_13_4', 'P_14_4', 'P_13_5',
+                                'P_14_5', 'P_13_6', 'P_13_7', 'P_15', 'P_16', 'P_17', 'P_18', 'P_19', 'P_19A', 'P_19B',
+                                'P_19C', 'P_20', 'P_20A', 'P_20B', 'P_21', 'P_21A', 'P_21B', 'P_21C', 'P_22A', 'P_22B',
+                                'P_22C', 'P_23', 'P_106E_2', 'P_106E_3', 'P_106E_3A']
+
+                }
+
+
+
+            self.worksheets_generate(tags, workbook, file, self.fill_sheet, ns, bold, date, money, numbers, strings)
+
+            workbook.close()
+
+            # removing loaded file from db and from media folder
+            file.delete()
+            os.remove(os.path.join(settings.MEDIA_ROOT, file.name))
+
+            return response
+
+        form = LoadedFileForm()
+        ctx = {'form': form,}
+        return render(request, 'conversion.html', ctx)

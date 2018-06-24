@@ -17,14 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from JPK_app.views import ConvertToDBView, ExportToExcel, Registration, LogInView, logout
+from JPK_app.views import ConvertXLMView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^conversion_db/$', ConvertToDBView.as_view(), name='conversion_db'),
-    url(r'^export/(?P<file_id>(\d)+)/$', ExportToExcel.as_view(), name="export"),
-    url(r'^registration/$', Registration.as_view(), name="registration"),
-    url(r'^login/$', LogInView.as_view(), name="login"),
-    url(r'^logout/$', logout, name="logout"),
+    url(r'^conversion_db/$', ConvertXLMView.as_view(), name='conversion_db'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
