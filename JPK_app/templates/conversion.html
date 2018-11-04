@@ -1,10 +1,31 @@
-{% extends '_base.html' %}
+{% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XML_Konwerter</title>
+    <link rel="stylesheet" href="{% static 'JPK_app/css/bootstrap.min.css'%}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                {% block content %}
 
-    <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-        <input type="submit" name="submit" value="Upload">
-    </form>
-{% endblock content %}
+                <form action="" method="POST" enctype="multipart/form-data" class="form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" name="submit" value="Upload" class="btn">
+                </form>
+
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

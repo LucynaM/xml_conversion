@@ -23,4 +23,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^conversion_db/$', ConvertXLMView.as_view(), name='conversion_db'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
-              + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
