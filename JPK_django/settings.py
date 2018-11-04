@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # other app
-    'crispy_forms',
     #my app
     'JPK_app',
 ]
@@ -138,6 +136,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # LOGIN_URL = 'login'
-
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
