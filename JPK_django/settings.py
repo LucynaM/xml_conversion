@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from .secret_key import secret_key
+from .secret_key import secret_key, database
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # other app
+    'crispy_forms',
     #my app
     'JPK_app',
 ]
@@ -80,16 +82,7 @@ WSGI_APPLICATION = 'JPK_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jpk_db',
-        'USER': 'root',
-        'PASSWORD': 'coderslab',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
-    }
-}
+DATABASES = database
 
 
 # Password validation
@@ -136,3 +129,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # LOGIN_URL = 'login'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

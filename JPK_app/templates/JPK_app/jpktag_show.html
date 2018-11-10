@@ -1,0 +1,10 @@
+{% extends './_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h2 class="page-header">{{ obj.name }}</h2>
+<p>typ: {{ obj.get_type_display }}</p>
+<p>tabela: {{ obj.table }}</p>
+
+{% endblock content %}

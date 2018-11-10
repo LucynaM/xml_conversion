@@ -1,0 +1,38 @@
+{% extends './_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="col-sm-6 offset-sm-3 default-div">
+    <h2 class="page-header">{{ table.name }}</h2>
+    <hr>
+</div>
+
+
+<div class="col-sm-6 offset-sm-3 default-div">
+    <h4>{{ file.name }}</h4>
+    <p>namespace: {{ file.raw_ns }}</p>
+</div>
+
+
+<div class="col-sm-6 offset-sm-3 default-div">
+    <form action="" method="POST" class="form jumbotron">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" name="submit" value="dodaj tag" class="btn btn-info">
+    </form>
+</div>
+
+<div class="col-sm-6 offset-sm-3 default-div">
+    {% if tags %}
+    <ul>
+    {% for tag in tags %}
+        <li><a href="">{{ tag.name }}, typ: {{ tag.get_type_display }}</a></li>
+    {% endfor %}
+    </ul>
+    <hr>
+    {% endif %}
+</div>
+
+
+{% endblock content %}

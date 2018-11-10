@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XML_Konwerter</title>
+    <link rel="stylesheet" href="{% static 'JPK_app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'JPK_app/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            {% block content%}
+            {% endblock content%}
+        </div>
+    </div>
+
+    <script src="{% static 'JPK_app/js/jquery-3.3.1.min.js'%}"></script>
+    <!--<script src="{% static 'JPK_app/js/jquery-ui.min.js'%}"></script>-->
+    <script src="{% static 'JPK_app/js/bootstrap.min.js'%}"></script>
+</body>
+</html>

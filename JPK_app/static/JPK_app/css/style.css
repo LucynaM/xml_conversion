@@ -1,0 +1,47 @@
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.default-div {
+    margin-bottom: 3vh;
+}
+
+h4 {
+    color: grey;
+    margin-bottom: 2vh;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+
+}
+
+
+a {
+    font-size: .9rem;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+    text-decoration: none;
+
+}
