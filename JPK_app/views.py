@@ -144,3 +144,92 @@ class JPKTableShow(View):
         }
         return render(request, 'JPK_app/jpktable_show.html', ctx)
 
+
+class JPKFileList(View):
+    """list all jpk files"""
+    def get(self, request):
+        files = JPKFile.objects.all()
+        ctx = {
+            'files': files,
+        }
+        return render(request, 'JPK_app/jpkfile_list.html', ctx)
+
+
+class JPKFileEdit(View):
+    """edit jpk file"""
+    def get(self, request, pk):
+        file = JPKFile.objects.get(pk=pk)
+        form = JPKFileForm(instance=file)
+
+        ctx = {
+            'file': file,
+            'form': form,
+        }
+
+        return render(request, 'JPK_app/jpkfile_edit.html', ctx)
+
+    def post(self, request, pk):
+        file = JPKFile.objects.get(pk=pk)
+        form = JPKFileForm(request.POST, instance=file)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('file_show', pk=pk)
+
+        ctx = {
+            'file': file,
+            'form': form,
+        }
+
+        return render(request, 'JPK_app/jpkfile_edit.html', ctx)
+
+
+class JPKTableEdit(View):
+    """edit jpk table"""
+    def get(self, request, pk):
+        table = JPKTable.objects.get(pk=pk)
+        form = JPKTableForm(instance=table)
+        ctx = {
+            'table': table,
+            'form': form,
+        }
+        return render(request, 'JPK_app/jpktable_edit.html', ctx)
+
+    def post(self, request, pk):
+        table = JPKTable.objects.get(pk=pk)
+        form = JPKTableForm(request.POST, instance=table)
+        if form.is_valid():
+            form.save()
+            return redirect('file_show', pk=table.file.pk)
+
+        ctx = {
+            'table': table,
+            'form': form,
+        }
+        return render(request, 'JPK_app/jpktable_edit.html', ctx)
+
+
+class JPKTagEdit(View):
+    """edit jpk tag"""
+    def get(self, request, pk):
+        tag = JPKTag.objects.get(pk=pk)
+        form = JPKTagForm(instance=tag)
+        ctx = {
+            'tag': tag,
+            'form': form,
+        }
+        return render(request, 'JPK_app/jpktag_edit.html', ctx)
+
+    def post(self, request, pk):
+        tag = JPKTag.objects.get(pk=pk)
+        form = JPKTagForm(request.POST, instance=tag)
+        if form.is_valid():
+            form.save()
+            return redirect('file_show', pk=tag.table.file.pk)
+
+        ctx = {
+            'tag': tag,
+            'form': form,
+        }
+        return render(request, 'JPK_app/jpktag_edit.html', ctx)

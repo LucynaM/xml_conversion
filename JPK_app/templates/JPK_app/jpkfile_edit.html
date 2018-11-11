@@ -3,11 +3,11 @@
 
 {% block content %}
 <div class="col-sm-6 offset-sm-3 default-div">
-    <h2 class="page-header">Plik JPK</h2>
+    <h2 class="page-header">Plik</h2>
     <form action="" method="POST" class="form">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" name="submit" value="dodaj" class="btn btn-info">
+        <input type="submit" name="submit" value="zapisz" class="btn btn-info">
     </form>
 </div>
 {% endblock content %}

@@ -10,7 +10,7 @@
 
 
 <div class="col-sm-6 offset-sm-3 default-div">
-    <h4>{{ file.name }}</h4>
+    <h4><a href="{% url 'file_show' file.pk %}">{{ file.name }}</a></h4>
     <p>namespace: {{ file.raw_ns }}</p>
 </div>
 
@@ -27,7 +27,7 @@
     {% if tags %}
     <ul>
     {% for tag in tags %}
-        <li><a href="">{{ tag.name }}, typ: {{ tag.get_type_display }}</a></li>
+        <li><a href="{% url 'tag_edit' tag.pk %}">{{ tag.name }}, typ: {{ tag.get_type_display }}</a></li>
     {% endfor %}
     </ul>
     <hr>

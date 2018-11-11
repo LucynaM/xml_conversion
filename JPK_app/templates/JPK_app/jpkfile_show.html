@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="col-sm-6 offset-sm-3 default-div">
-    <h2 class="page-header">{{ file.name }}</h2>
+    <h2 class="page-header"><a href="{% url 'file_edit' file.pk %}">{{ file.name }}</a></h2>
     <p>namespace: {{ file.raw_ns }}</p>
     <hr>
 </div>
@@ -19,12 +19,12 @@
 
 {% for table in tables %}
 <div class="col-sm-6 offset-sm-3 default-div">
-    <h4>{{ table.name }}</h4>
+    <h4><a href="{% url 'table_show' table.pk %}">{{ table.name }}</a> <a href="{% url 'table_edit' table.pk %}">edytuj tabelę</a></h4>
 
     {% if table.tags.all %}
     <ul>
     {% for tag in table.tags.all %}
-        <li><a href="">{{ tag.name }}, typ: {{ tag.get_type_display }}</a></li>
+        <li><a href="{% url 'tag_edit' tag.pk %}">{{ tag.name }}, typ: {{ tag.get_type_display }}</a></li>
     {% endfor %}
     </ul>
     <hr>
