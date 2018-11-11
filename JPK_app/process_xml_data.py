@@ -9,7 +9,7 @@ def process_elem(elem, results):
     results.append(result)
 
 
-# iterating through xml structure Based on Liza Daly's fast_iter
+# iterate through xml structure Based on Liza Daly's fast_iter
 # http://www.ibm.com/developerworks/xml/library/x-hiperfparse/
 def fast_iter(file, tag, *args, **kwargs):
     context = ET.iterparse(file.path.url[1::], events=('end',), tag=tag)
@@ -25,7 +25,7 @@ def fast_iter(file, tag, *args, **kwargs):
     return results
 
 
-# getting type of file (VAT, KR...) by reading the beginning of xml file in search of namespace tag
+# get type of file (VAT, KR...) by reading the beginning of xml file in search of namespace tag
 def get_ns(file):
     ns = ""
 
@@ -40,7 +40,7 @@ def get_ns(file):
     return ns
 
 
-# creating list of exel columns that are not empty
+# create list of exel columns that are not empty
 def get_headers(keys, results):
     headers = []
     for el in keys:

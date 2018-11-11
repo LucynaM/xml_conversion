@@ -17,10 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from JPK_app.views import ConvertXLMView
+from JPK_app.views import ConvertXLMView, JPKFileCreate, JPKFileShow, JPKTableShow
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^conversion_db/$', ConvertXLMView.as_view(), name='conversion_db'),
+    url(r'^file_create/$', JPKFileCreate.as_view(), name='file_create'),
+    url(r'^file_show/(?P<pk>(\d)+)/$', JPKFileShow.as_view(), name='file_show'),
+    url(r'^table_show/(?P<pk>(\d)+)/$', JPKTableShow.as_view(), name='table_show'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
