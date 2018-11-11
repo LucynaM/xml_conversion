@@ -2,6 +2,8 @@ from .models import JPKFile, JPKTable, JPKTag
 
 
 def prepare_tags_scheme(ns):
+    """process data stored in JPKFile, JPKTable, JPKTag tables
+    in order to get them accessible from JPKFile instance"""
     obj = None
     for jpk_file in JPKFile.objects.all():
         if jpk_file.ns == ns:
