@@ -108,6 +108,7 @@ venv.bak/
 .idea/
 
 JPK/
+archive_files/
 
 # secret_key
 .secret_key*
