@@ -6,7 +6,6 @@
 <div class="col-sm-6 offset-sm-3 default-div">
     <h2 class="page-header"><a href="{% url 'file_edit' file.pk %}">{{ file.name }}</a></h2>
     <p>namespace: {{ file.raw_ns }}</p>
-    <hr>
 </div>
 
 <div class="col-sm-6 offset-sm-3 default-div">
@@ -19,7 +18,7 @@
 
 {% for table in tables %}
 <div class="col-sm-6 offset-sm-3 default-div">
-    <h4><a href="{% url 'table_show' table.pk %}">{{ table.name }}</a> <a href="{% url 'table_edit' table.pk %}">edytuj tabelę</a></h4>
+    <h4><a href="{% url 'table_show' table.pk %}">{{ table.name }}</a><a href="{% url 'table_edit' table.pk %}"> edytuj tabelę</a></h4>
 
     {% if table.tags.all %}
     <ul>

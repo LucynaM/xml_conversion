@@ -18,23 +18,36 @@
     display: block;
 }
 
+
 .default-div {
     margin-bottom: 3vh;
 }
 
-h4 {
+.navbar-nav {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+section.content {
+    padding-top: 3vh;
+}
+
+h4, h4 > a, p > a, h2 > a {
     color: grey;
     margin-bottom: 2vh;
+}
+
+h4 > a:last-child {
+    font-size: 1rem;
 }
 
 ul {
     list-style: none;
     padding-left: 0;
-
 }
 
 
-a {
+ul > li > a {
     font-size: .9rem;
     color: black;
     text-decoration: none;
@@ -43,5 +56,5 @@ a {
 a:hover {
     color: grey;
     text-decoration: none;
-
 }
+

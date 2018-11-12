@@ -1,11 +1,16 @@
 {% extends './_base.html' %}
 {% load crispy_forms_tags %}
 
+{% block link_management %}
+{% endblock link_management %}
+
 {% block content %}
 <div class="col-sm-6 offset-sm-3 default-div">
     <h2 class="page-header">Pliki JPK</h2>
-        {% for file in files %}
-            <p><a href="{% url 'file_show' file.pk %}">{{ file.name }}</a></p>
-        {% endfor %}
+    <ul>
+    {% for file in files %}
+        <li><a href="{% url 'file_show' file.pk %}">{{ file.name }}</a></li>
+    {% endfor %}
+    </ul>
 </div>
 {% endblock content %}

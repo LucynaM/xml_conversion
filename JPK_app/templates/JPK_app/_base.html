@@ -11,12 +11,41 @@
     <link rel="stylesheet" href="{% static 'JPK_app/css/style.css' %}">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            {% block content%}
-            {% endblock content%}
+    {% block nav %}
+    <!-- Nav - start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="">xml konwerter</a>
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+
+                    {% block link_management %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'file_list' %}">pliki</a>
+                    </li>
+                    {% endblock link_management %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">wyloguj</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
+    <!-- Nav - stop -->
+    {% endblock nav %}
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                {% block content%}
+                {% endblock content%}
+            </div>
+        </div>
+    </section>
 
     <script src="{% static 'JPK_app/js/jquery-3.3.1.min.js'%}"></script>
     <!--<script src="{% static 'JPK_app/js/jquery-ui.min.js'%}"></script>-->
