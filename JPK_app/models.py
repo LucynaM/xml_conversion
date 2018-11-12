@@ -1,10 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
 
 
 class LoadedFile(models.Model):
-    path = models.FileField(upload_to='files')
+    path = models.FileField()
     date_creation = models.DateTimeField(auto_now_add=True)
 
     @property

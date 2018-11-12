@@ -1,4 +1,6 @@
 import os
+import sys
+import shutil
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponseBadRequest, HttpResponse, Http404
@@ -32,27 +34,39 @@ class ConvertXLMView(View):
         form = LoadedFileForm(request.POST, request.FILES)
 
         if form.is_valid():
-            file = LoadedFile.objects.create(**form.cleaned_data)
 
+            # process loaded file by saving its path as a db row
+            file = LoadedFile.objects.create(**form.cleaned_data)
+            print(file.path.url)
+            file_path = file.path.url[1::]
+            print(file_path)
+
+            # define response as a xlsx file to download
             response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.name[6:-4:])
+            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.name[:-4:])
 
             # basic excel settings
             workbook = xlsxwriter.Workbook(response, {'in_memory': True})
 
             # define type of xml file by getting its namespace
-            ns = get_ns(file)
+            ns = get_ns(file_path)
 
             # get tags of xml file based on its namespace
             obj = prepare_tags_scheme(ns)
 
-            worksheets_generate(obj, workbook, file, ns)
+            # create worksheets where obj provides table and column names and file yields data to fill them
+            worksheets_generate(obj, workbook, file_path, ns)
 
             workbook.close()
 
-            # removing loaded file from db and from media folder
+            # remove loaded file from db
             file.delete()
-            os.remove(os.path.join(settings.MEDIA_ROOT, file.name))
+
+            # delete /media folder with its content
+            try:
+                shutil.rmtree(settings.MEDIA_ROOT)
+            except OSError as e:
+                print("Error: %s - %s." % (e.filename, e.strerror))
 
             return response
 
