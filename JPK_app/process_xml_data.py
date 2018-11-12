@@ -11,8 +11,8 @@ def process_elem(elem, results):
 
 # iterate through xml structure Based on Liza Daly's fast_iter
 # http://www.ibm.com/developerworks/xml/library/x-hiperfparse/
-def fast_iter(file, tag, *args, **kwargs):
-    context = ET.iterparse(file.path.url[1::], events=('end',), tag=tag)
+def fast_iter(file_path, tag, *args, **kwargs):
+    context = ET.iterparse(file_path, events=('end',), tag=tag)
     results = []
 
     for event, elem in context:
@@ -26,10 +26,10 @@ def fast_iter(file, tag, *args, **kwargs):
 
 
 # get type of file (VAT, KR...) by reading the beginning of xml file in search of namespace tag
-def get_ns(file):
+def get_ns(file_path):
     ns = ""
 
-    with open(file.path.url[1::], 'r') as f:
+    with open(file_path, 'r') as f:
         start = f.read(200)
         if 'http://jpk.mf.gov.pl/wzor/2016/10/26/10261/' in start:
             ns = '{http://jpk.mf.gov.pl/wzor/2016/10/26/10261/}'

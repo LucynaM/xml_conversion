@@ -37,7 +37,7 @@ def fill_sheet(headers, sheet, results, obj, bold, date, money, numbers, strings
 
 
 # build excel worksheet
-def worksheets_generate(obj, workbook, file, ns):
+def worksheets_generate(obj, workbook, file_path, ns):
     for key, value in obj.tags.items():
 
         worksheet = workbook.add_worksheet(name=key)
@@ -51,7 +51,7 @@ def worksheets_generate(obj, workbook, file, ns):
 
         if key == 'KontoZapisRestructured':
             # process non existing table by specifying which table and tags it is based
-            results = fast_iter(file, ns + 'KontoZapis')
+            results = fast_iter(file_path, ns + 'KontoZapis')
             headers = get_headers(['LpZapisu',
                                    'NrZapisu',
                                    'KwotaWinien',
@@ -66,7 +66,7 @@ def worksheets_generate(obj, workbook, file, ns):
             results = change_data(results)
 
         else:
-            results = fast_iter(file, ns + key)
+            results = fast_iter(file_path, ns + key)
             headers = get_headers(value, results)
 
         fill_sheet(headers, worksheet, results, obj, bold, date, money, numbers, strings)
