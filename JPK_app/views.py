@@ -1,18 +1,22 @@
 import os
 import sys
 import shutil
+
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponseBadRequest, HttpResponse, Http404
-from .models import LoadedFile, JPKFile, JPKTag, JPKTable
-from .forms import LoadedFileForm, JPKFileForm, JPKTableForm, JPKTagForm
 from django.conf import settings
 
-import xlsxwriter
+from .models import LoadedFile, JPKFile, JPKTag, JPKTable
+from .forms import LoadedFileForm, JPKFileForm, JPKTableForm, JPKTagForm
 
 from .process_xml_data import get_ns
 from .prepare_tags_scheme import prepare_tags_scheme
 from .build_excel_file import worksheets_generate
+from .handle_zip_archive import handle_zip_file
+
+import xlsxwriter
+
 import zipfile
 
 # Create your views here.
@@ -37,22 +41,38 @@ class ConvertXLMView(View):
 
             # process loaded file by saving its path as a db row
             file = LoadedFile.objects.create(**form.cleaned_data)
-            print(file.path.url)
             file_path = file.path.url[1::]
-            print(file_path)
+            file_name = file.name[:-4]
 
-            # define response as a xlsx file to download
-            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file.name[:-4:])
 
-            # basic excel settings
-            workbook = xlsxwriter.Workbook(response, {'in_memory': True})
+            # if loaded file is a zip, extract xml file from the archive and rewrite file_path and file_name variables
+            if file.name.endswith(('.zip', '.ZIP', )):
+                try:
+                    unzipped_file= handle_zip_file(file)
+                    file_path = unzipped_file
+                    file_name = unzipped_file[6:-4]
+
+                except zipfile.BadZipfile as e:
+                    print(e)
+                except zipfile.LargeZipFile as e:
+                    print(e)
 
             # define type of xml file by getting its namespace
             ns = get_ns(file_path)
 
+            # handle empty ns
+            if not ns:
+                return HttpResponse("Plik nie zawiera tagu definiującego go jako plik JPK_VAT lub JPK_KR zgodnie z instrukcją MF")
+
             # get tags of xml file based on its namespace
             obj = prepare_tags_scheme(ns)
+
+            # define response as a xlsx file to download
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response['Content-Disposition'] = "attachment; filename={}.xlsx".format(file_name)
+
+            # basic excel settings
+            workbook = xlsxwriter.Workbook(response, {'in_memory': True})
 
             # create worksheets where obj provides table and column names and file yields data to fill them
             worksheets_generate(obj, workbook, file_path, ns)
@@ -62,7 +82,7 @@ class ConvertXLMView(View):
             # remove loaded file from db
             file.delete()
 
-            # delete /media folder with its content
+            # delete media folder with its content
             try:
                 shutil.rmtree(settings.MEDIA_ROOT)
             except OSError as e:
