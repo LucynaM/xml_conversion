@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from JPK_app.views import ConvertXLMView, JPKFileCreate, JPKFileShow, JPKTableShow, JPKFileList, JPKFileEdit, JPKTableEdit, JPKTagEdit
 
@@ -29,6 +30,8 @@ urlpatterns = [
     url(r'^file_edit/(?P<pk>(\d)+)/$', JPKFileEdit.as_view(), name='file_edit'),
     url(r'^table_edit/(?P<pk>(\d)+)/$', JPKTableEdit.as_view(), name='table_edit'),
     url(r'^tag_edit/(?P<pk>(\d)+)/$', JPKTagEdit.as_view(), name='tag_edit'),
+    url(r'^login/$', auth_views.login, {'template_name': 'JPK_app/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

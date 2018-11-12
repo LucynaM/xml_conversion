@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponseBadRequest, HttpResponse, Http404
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import LoadedFile, JPKFile, JPKTag, JPKTable
 from .forms import LoadedFileForm, JPKFileForm, JPKTableForm, JPKTagForm
@@ -95,7 +96,7 @@ class ConvertXLMView(View):
         return render(request, 'JPK_app/conversion.html', ctx)
 
 
-class JPKFileCreate(View):
+class JPKFileCreate(LoginRequiredMixin, View):
     """create file"""
     def get(self, request):
         form = JPKFileForm()
@@ -115,7 +116,7 @@ class JPKFileCreate(View):
         return render(request, 'JPK_app/jpkfile_form.html', ctx)
 
 
-class JPKFileShow(View):
+class JPKFileShow(LoginRequiredMixin, View):
     """create tables in a file"""
     def get(self, request, pk):
         file = JPKFile.objects.get(pk=pk)
@@ -145,7 +146,7 @@ class JPKFileShow(View):
         return render(request, 'JPK_app/jpkfile_show.html', ctx)
 
 
-class JPKTableShow(View):
+class JPKTableShow(LoginRequiredMixin, View):
     """create tags in a table"""
     def get(self, request, pk):
         table = JPKTable.objects.get(pk=pk)
@@ -179,7 +180,7 @@ class JPKTableShow(View):
         return render(request, 'JPK_app/jpktable_show.html', ctx)
 
 
-class JPKFileList(View):
+class JPKFileList(LoginRequiredMixin, View):
     """list all jpk files"""
     def get(self, request):
         files = JPKFile.objects.all()
@@ -218,7 +219,7 @@ class JPKFileEdit(View):
         return render(request, 'JPK_app/jpkfile_edit.html', ctx)
 
 
-class JPKTableEdit(View):
+class JPKTableEdit(LoginRequiredMixin, View):
     """edit jpk table"""
     def get(self, request, pk):
         table = JPKTable.objects.get(pk=pk)
@@ -246,7 +247,7 @@ class JPKTableEdit(View):
         return render(request, 'JPK_app/jpktable_edit.html', ctx)
 
 
-class JPKTagEdit(View):
+class JPKTagEdit(LoginRequiredMixin, View):
     """edit jpk tag"""
     def get(self, request, pk):
         tag = JPKTag.objects.get(pk=pk)
