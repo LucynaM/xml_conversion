@@ -8,6 +8,7 @@
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" name="submit" value="zapisz" class="btn btn-info">
+        <input type="submit" name="submit" value="usuń" class="btn btn-danger">
     </form>
 </div>
 {% endblock content %}

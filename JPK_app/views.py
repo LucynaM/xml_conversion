@@ -208,7 +208,6 @@ class JPKFileEdit(View):
 
         if form.is_valid():
             form.save()
-
             return redirect('file_show', pk=pk)
 
         ctx = {
@@ -234,7 +233,10 @@ class JPKTableEdit(View):
         table = JPKTable.objects.get(pk=pk)
         form = JPKTableForm(request.POST, instance=table)
         if form.is_valid():
-            form.save()
+            if request.POST['submit'] == 'zapisz':
+                form.save()
+            elif request.POST['submit'] == 'usuń':
+                form.delete()
             return redirect('file_show', pk=table.file.pk)
 
         ctx = {
@@ -259,7 +261,10 @@ class JPKTagEdit(View):
         tag = JPKTag.objects.get(pk=pk)
         form = JPKTagForm(request.POST, instance=tag)
         if form.is_valid():
-            form.save()
+            if request.POST['submit'] == 'zapisz':
+                form.save()
+            elif request.POST['submit'] == 'usuń':
+                form.delete()
             return redirect('file_show', pk=tag.table.file.pk)
 
         ctx = {
@@ -267,3 +272,4 @@ class JPKTagEdit(View):
             'form': form,
         }
         return render(request, 'JPK_app/jpktag_edit.html', ctx)
+
