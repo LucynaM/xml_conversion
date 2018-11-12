@@ -1,5 +1,5 @@
 import zipfile
-import os
+from django.conf import settings
 
 def handle_zip_file(file):
     with zipfile.ZipFile(file.path, allowZip64=True) as zip_file:
@@ -7,7 +7,6 @@ def handle_zip_file(file):
         for name in names:
             if name.endswith(('.xml', '.XML', )):
                 file_name = name
-                print(file_name)
-        unzipped_file = zip_file.extract(file_name, file.path.url[1:7])
+        unzipped_file = zip_file.extract(file_name, settings.MEDIA_ROOT)
     zip_file.close()
     return unzipped_file
