@@ -12,6 +12,7 @@ def process_elem(elem, results):
 # iterate through xml structure Based on Liza Daly's fast_iter
 # http://www.ibm.com/developerworks/xml/library/x-hiperfparse/
 def fast_iter(file_path, tag, *args, **kwargs):
+    # tag is composed of namespace and table name
     context = ET.iterparse(file_path, events=('end',), tag=tag)
     results = []
 
@@ -46,6 +47,7 @@ def get_headers(keys, results):
     for el in keys:
         # True for any tag that doesn't exist in result keys
         test_if_empty = len([True for result in results if el not in result.keys()])
+        # append header to headers list if at least one row in a table contains a value for that header
         if test_if_empty != len(results):
             headers.append(el)
     return headers
@@ -63,7 +65,7 @@ def change_data_generic(result, required_elements, optional_elements):
 # change parsing result in order to get KodKonta instead of KodKontaWinien/KodKontaMa with values in a single row - application
 def change_data(results):
     new_results = []
-
+    # match values from KontoZapis to KontoZapisRestructured
     for result in results:
         debit_elements = {
                 'LpZapisu': result['LpZapisu'],

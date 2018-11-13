@@ -9,9 +9,9 @@ def prepare_tags_scheme(ns):
         if jpk_file.ns == ns:
             obj = jpk_file
 
-    #represent file content as dictionary where key is a table name and values are tags names
+    # represent file content as dictionary where key is a table name and values are tags names
     obj.tags = {}
-    #select all tags that should contain dates
+    # select all tags that should contain dates
     obj.date_fields = []
     # select all tags that should contain money value
     obj.money_fields = []

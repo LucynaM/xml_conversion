@@ -3,6 +3,7 @@ from django.conf import settings
 
 def handle_zip_file(file):
     with zipfile.ZipFile(file.path, allowZip64=True) as zip_file:
+        # look for xml file in an archive and extract it
         names = zip_file.namelist()
         for name in names:
             if name.endswith(('.xml', '.XML', )):

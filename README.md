@@ -6,7 +6,7 @@ JPK_VAT & JPK_KR file conversion (xml => excel)
 4. Process loaded file:
 * Create interface that allows user to load a file
 * Recognize the type of file based on its namespace tag
-* Process data stored in loaded file in order to save them as an array of dictionaries with lxml
+* Process data stored in loaded file with lxml in order to save them as an array of dictionaries
 * Save data obtained in that way as a xmlx file with XlsxWriter
 * Delete xml file after processing it
 5. ToDo:

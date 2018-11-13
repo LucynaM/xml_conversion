@@ -2,7 +2,7 @@
 from datetime import datetime
 from .process_xml_data import fast_iter, get_headers, change_data
 
-# filling excel sheet with xml parsed data
+# fill excel sheet with xml parsed data
 def fill_sheet(headers, sheet, results, obj, bold, date, money, numbers, strings):
 
     col = 0
@@ -50,7 +50,7 @@ def worksheets_generate(obj, workbook, file_path, ns):
         strings = workbook.add_format({'num_format': '@'})
 
         if key == 'KontoZapisRestructured':
-            # process non existing table by specifying which table and tags it is based
+            # process non existing table by specifying which table and tags it is based on
             results = fast_iter(file_path, ns + 'KontoZapis')
             headers = get_headers(['LpZapisu',
                                    'NrZapisu',
