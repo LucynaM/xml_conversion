@@ -1,4 +1,4 @@
-Django==1.11.15
+Django==1.11.18
 django-crispy-forms==1.7.2
 lml==0.0.1
 lxml==4.2.1
